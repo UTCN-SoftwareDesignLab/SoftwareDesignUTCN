@@ -13,7 +13,7 @@
 
 
 ### Lab 2:
-- [Decorator / Builder code example](https://github.com/SoftwareDesign2017/LabCodeExamples)
+- [Decorator / Builder code example](https://github.com/SoftwareDesign2017/LabCodeExamples/tree/master/Example%201)
 - ["Uncle Bob" on Design Patterns](http://blog.cleancoder.com/uncle-bob/2014/06/30/ALittleAboutPatterns.html)
 
 
