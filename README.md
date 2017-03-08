@@ -12,6 +12,10 @@
 - [Martin Fowler on Dependency Injection](https://martinfowler.com/articles/injection.html)  
 
 
+### Lab 2:
+- [Decorator / Builder code example](https://github.com/SoftwareDesign2017/LabCodeExamples)
+- ["Uncle Bob" on Design Patterns](http://blog.cleancoder.com/uncle-bob/2014/06/30/ALittleAboutPatterns.html)
+
 
 
 
