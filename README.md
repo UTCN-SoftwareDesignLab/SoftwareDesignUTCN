@@ -16,6 +16,10 @@
 - [Decorator / Builder code example](https://github.com/SoftwareDesign2017/LabCodeExamples/tree/master/Example%201)
 - ["Uncle Bob" on Design Patterns](http://blog.cleancoder.com/uncle-bob/2014/06/30/ALittleAboutPatterns.html)
 
+### Lab 3:
+- [Factory / User roles/rights example](https://github.com/SoftwareDesign2017/LabCodeExamples/tree/master/Example%202)
+- [Is TDD dead? (thank you Theodor!)](https://www.youtube.com/watch?v=z9quxZsLcfo&list=PLJb2p0qX8R_qSRhs14CiwKuDuzERXSU8m)
+
 
 
 
