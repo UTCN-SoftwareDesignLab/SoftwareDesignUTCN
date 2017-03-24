@@ -23,6 +23,11 @@
 - [**FIRST ASSIGNMENT GIT LINK**](https://classroom.github.com/assignment-invitations/b159d3e2193892e8d6ae807e8fae65df)
 
 
+### Lab 3:
+- [Fowler's Notification pattern](https://martinfowler.com/articles/replaceThrowWithNotification.html)
+- [Java Exceptions - Best Practices 1](http://javarevisited.blogspot.ro/2013/03/0-exception-handling-best-practices-in-Java-Programming.html)
+- [Java Exceptions - Best Practices 1](https://www.javacodegeeks.com/2013/07/java-exception-handling-tutorial-with-examples-and-best-practices.html)
+
 
 
 
