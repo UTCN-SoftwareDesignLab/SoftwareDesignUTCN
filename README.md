@@ -30,11 +30,10 @@
 - [Java Exceptions - Best Practices 1](https://www.javacodegeeks.com/2013/07/java-exception-handling-tutorial-with-examples-and-best-practices.html)
 
 
-
-
-
-
-
+### Lab 5:
+- [MVC (Observable + Command) pattern example](https://github.com/SoftwareDesign2017/LabCodeExamples)
+- [3 Tier Architecture vs. MVC](http://stackoverflow.com/questions/10739914/what-is-the-difference-between-3-tier-architecture-and-a-mvc)
+- [Command pattern 'in real life'](http://stackoverflow.com/questions/12153708/real-world-example-of-application-of-the-command-pattern)
 
 
 
