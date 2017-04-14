@@ -36,6 +36,13 @@
 - [Command pattern 'in real life'](http://stackoverflow.com/questions/12153708/real-world-example-of-application-of-the-command-pattern)
 
 
+### Lab 6:
+- [GIT GUD!](https://www.atlassian.com/git/tutorials)
+
+
+### Lab 7:
+- [Spring Boot Example](https://github.com/SoftwareDesign2017/LabCodeExamples/tree/master/Example%205)
+
 
 
 
