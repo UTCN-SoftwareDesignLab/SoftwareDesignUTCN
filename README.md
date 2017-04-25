@@ -47,6 +47,7 @@
 ### Lab 8:
 - [Grails example]()
 - [GORM Inside And Out](https://www.youtube.com/watch?v=ExIfX1MFraU)
+- [Testing with Spock](https://www.youtube.com/watch?v=GYszXrJtxKA)
 
 
 
