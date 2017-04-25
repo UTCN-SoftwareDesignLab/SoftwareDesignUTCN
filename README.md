@@ -44,6 +44,10 @@
 - [Spring Boot Example](https://github.com/SoftwareDesign2017/LabCodeExamples/tree/master/Example%205)
 
 
+### Lab 8:
+- [Grails example]()
+- [GORM Inside And Out](https://www.youtube.com/watch?v=ExIfX1MFraU)
+
 
 
 
