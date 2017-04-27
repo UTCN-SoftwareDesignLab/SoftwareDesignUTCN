@@ -45,11 +45,11 @@
 
 
 ### Lab 8:
-- [Grails example]()
+- [Grails example](https://github.com/SoftwareDesign2017/LabCodeExamples/tree/master/Example%206)
 - [GORM Inside And Out](https://www.youtube.com/watch?v=ExIfX1MFraU)
 - [Testing with Spock](https://www.youtube.com/watch?v=GYszXrJtxKA)
-
-
+- [GORM Gotchas](https://spring.io/blog/2010/07/02/gorm-gotchas-part-2/)
+- [Scaffolding!](https://docs.grails.org/latest/guide/scaffolding.html)
 
 
 [**](https://www.youtube.com/watch?v=6GMkuPiIZ2k)
