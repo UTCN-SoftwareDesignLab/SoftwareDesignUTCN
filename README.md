@@ -51,5 +51,8 @@
 - [GORM Gotchas](https://spring.io/blog/2010/07/02/gorm-gotchas-part-2/)
 - [Scaffolding!](https://docs.grails.org/latest/guide/scaffolding.html)
 
+### Lab 9:
+- [WebSockets example - Spring](https://github.com/SoftwareDesign2017/LabCodeExamples/tree/master/Example%207)
+
 
 [**](https://www.youtube.com/watch?v=6GMkuPiIZ2k)
