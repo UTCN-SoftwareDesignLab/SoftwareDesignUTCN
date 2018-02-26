@@ -38,6 +38,7 @@
 
 ### Lab 6:
 - [GIT GUD!](https://www.atlassian.com/git/tutorials)
+- [**SECOND ASSIGNMENT GIT LINK**](https://classroom.github.com/assignment-invitations/e9b73f5ad86f762c9749f10eb97ec632)
 
 
 ### Lab 7:
@@ -50,6 +51,15 @@
 - [Testing with Spock](https://www.youtube.com/watch?v=GYszXrJtxKA)
 - [GORM Gotchas](https://spring.io/blog/2010/07/02/gorm-gotchas-part-2/)
 - [Scaffolding!](https://docs.grails.org/latest/guide/scaffolding.html)
+
+### Lab 9:
+- [WebSockets example - Spring](https://github.com/SoftwareDesign2017/LabCodeExamples/tree/master/Example%207)
+- [**THIRD ASSIGNMENT GIT LINK**](https://classroom.github.com/assignment-invitations/0a35c8d8963ef53daa044c3049d70a79)
+
+### Lab 10:
+- [Microservice Architecture - Presentation](https://prezi.com/p/0nsgsurgypca/)
+- [Microservice Architecture - Code](https://github.com/alinturbut/microservice-presentation)
+- [**FINAL PROJECT GIT LINK**](https://classroom.github.com/assignment-invitations/df5ea7c660551ed609045b7854b81f0a)
 
 
 [**](https://www.youtube.com/watch?v=6GMkuPiIZ2k)
