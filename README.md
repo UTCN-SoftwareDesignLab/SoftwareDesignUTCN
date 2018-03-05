@@ -7,6 +7,7 @@
 - [Excel file with attendance and project specifications](https://github.com/SoftwareDesign2017/SoftwareDesign2017/tree/master/Resources)
 
 ### Lab 1:
+- [Example 0 - SOLID principles](https://github.com/UTCN-SoftwareDesignLab/LabCodeExamples/tree/master/Example%200%20-%20SOLID)
 - [Dagger 2 + some history of Dependency Injection](https://www.youtube.com/watch?v=oK_XtfXPkqw)
 - [Clean Code Talk on Inheritance, Polymorphism & Testing](https://www.youtube.com/watch?v=4F72VULWFvc)
 - [One example of the transgression of Liskov's substitution principle](http://www.oodesign.com/liskov-s-substitution-principle.html)
