@@ -14,6 +14,6 @@ public class ComplexInvoice {
 
     @Override
     public String toString() {
-        return String.valueOf(this.number) + " " + dateCreated;
+        return this.number + " " + dateCreated;
     }
 }

@@ -40,7 +40,6 @@ public class Main {
     }
 
 
-
     private static void testS() {
         testSBad();
         testSGood();
@@ -68,7 +67,6 @@ public class Main {
     }
 
 
-
     private static void testO() {
         testOBad();
         testOGood();
@@ -94,7 +92,6 @@ public class Main {
     }
 
 
-
     private static void testL() {
         testLBad();
         testLGood();
@@ -115,7 +112,6 @@ public class Main {
         goodGraphicsService.checkForArea(rectangle);
         goodGraphicsService.checkForArea(square);
     }
-
 
 
     private static void testI() {
@@ -152,7 +148,6 @@ public class Main {
         // other 2 methods are unavailable
         someOtherGoodInvoicePrinter.someOtherPrintMethod(invoice);
     }
-
 
 
     private static void testD() {

@@ -2,23 +2,23 @@ package l.good;
 
 public class GoodSquare extends Shape {
 
-	private int dimension;
+    private int dimension;
 
-	public GoodSquare(int dimension) {
-		this.dimension = dimension;
-	}
+    public GoodSquare(int dimension) {
+        this.dimension = dimension;
+    }
 
-	public int getDimension() {
-		return dimension;
-	}
+    public int getDimension() {
+        return dimension;
+    }
 
-	public void setDimension(int width) {
-		this.dimension = width;
-	}
+    public void setDimension(int width) {
+        this.dimension = width;
+    }
 
-	@Override
-	public int getArea() {
-		return this.dimension * this.dimension;
-	}
+    @Override
+    public int getArea() {
+        return this.dimension * this.dimension;
+    }
 
 }

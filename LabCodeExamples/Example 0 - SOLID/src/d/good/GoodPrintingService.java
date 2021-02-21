@@ -6,14 +6,14 @@ import i.good.GoodInvoicePrinter_I;
 
 public class GoodPrintingService {
 
-	private GoodInvoicePrinter_I invoicePrinter;
+    private final GoodInvoicePrinter_I invoicePrinter;
 
-	public GoodPrintingService(GoodInvoicePrinter_I invoicePrinter) {
-		this.invoicePrinter = invoicePrinter;
-	}
+    public GoodPrintingService(GoodInvoicePrinter_I invoicePrinter) {
+        this.invoicePrinter = invoicePrinter;
+    }
 
-	public void print(Invoice invoice) {
-		invoicePrinter.print(invoice);
-	}
+    public void print(Invoice invoice) {
+        invoicePrinter.print(invoice);
+    }
 
 }
