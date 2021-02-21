@@ -4,7 +4,7 @@
 - [Lab Schedule (_"More like what you'd call guidelines than actual rules**"_)](https://github.com/SoftwareDesign2017/SoftwareDesign2017/blob/master/Resources/Schedule.pdf)
 - [Project related documents](https://github.com/SoftwareDesign2017/SoftwareDesign2017/tree/master/Resources/Projects)
 - [List of example projects](https://github.com/SoftwareDesign2017/SoftwareDesign2017/blob/master/Resources/Projects/Projects%20List%20examples.doc) **(you will not be allowed to pick anything from this list, instead, you'll have to come up with your own ideas)**
-- [Excel file with attendance and project specifications](https://github.com/SoftwareDesign2017/SoftwareDesign2017/tree/master/Resources)
+- [Excel file with attendance and project specifications](https://github.com/UTCN-SoftwareDesignLab/SoftwareDesign2018/blob/master/Resources/Projects/Projects%20List%20examples.pdf)
 
 ### Lab 1:
 - [Example 0 - SOLID principles](https://github.com/UTCN-SoftwareDesignLab/LabCodeExamples/tree/master/Example%200%20-%20SOLID)
