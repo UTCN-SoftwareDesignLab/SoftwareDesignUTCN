@@ -98,10 +98,10 @@ public class Main {
     }
 
     private static void testLBad() {
-        BadRectangle actuallySquare = new BadSquare(20, 30);
         BadGraphicsService badGraphicsService = new BadGraphicsService();
+        BadRectangle actuallySquare = new BadSquare();
 
-        badGraphicsService.checkForArea(actuallySquare);
+        badGraphicsService.verify(actuallySquare);
     }
 
     private static void testLGood() {
@@ -109,8 +109,8 @@ public class Main {
         Shape square = new GoodSquare(20);
         GoodGraphicsService goodGraphicsService = new GoodGraphicsService();
 
-        goodGraphicsService.checkForArea(rectangle);
-        goodGraphicsService.checkForArea(square);
+        goodGraphicsService.verify(rectangle);
+        goodGraphicsService.verify(square);
     }
 
 

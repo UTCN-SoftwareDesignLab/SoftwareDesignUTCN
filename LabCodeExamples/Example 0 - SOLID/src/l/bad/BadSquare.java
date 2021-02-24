@@ -2,10 +2,6 @@ package l.bad;
 
 public class BadSquare extends BadRectangle {
 
-    public BadSquare(int height, int width) {
-        super(height, width);
-    }
-
     public void setHeight(int height) {
         super.setHeight(height);
         super.setWidth(height);

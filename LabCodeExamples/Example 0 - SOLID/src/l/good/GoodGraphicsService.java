@@ -2,7 +2,7 @@ package l.good;
 
 public class GoodGraphicsService {
 
-    public void checkForArea(Shape shape) {
+    public void verify(Shape shape) {
         // totally different. can't set the dimensions of an abstract shape
         shape.getArea();
     }
