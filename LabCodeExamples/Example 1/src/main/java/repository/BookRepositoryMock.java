@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
  */
 public class BookRepositoryMock implements BookRepository {
 
-    private List<Book> books;
+    private final List<Book> books;
 
     public BookRepositoryMock() {
         books = new ArrayList<>();
