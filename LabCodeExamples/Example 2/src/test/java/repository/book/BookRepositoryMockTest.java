@@ -12,8 +12,7 @@ import repository.book.BookRepositoryMock;
 
 import java.util.Date;
 
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 /**
  * Created by Alex on 08/03/2017.
@@ -37,7 +36,7 @@ public class BookRepositoryMockTest {
 
     @Test
     public void findAll() throws Exception {
-        assertTrue(repository.findAll().size() == 0);
+        assertEquals(0, repository.findAll().size());
     }
 
     @Test
