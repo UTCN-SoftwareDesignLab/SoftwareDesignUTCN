@@ -7,7 +7,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -46,7 +46,7 @@ public class BookRepositoryMySQLTest {
         Book book = new BookBuilder()
                 .setTitle("Title")
                 .setAuthor("Author")
-                .setPublishedDate(new Date())
+                .setPublishedDate(LocalDate.now())
                 .build();
         bookRepository.save(book);
         bookRepository.save(book);
@@ -67,7 +67,7 @@ public class BookRepositoryMySQLTest {
                 new BookBuilder()
                         .setTitle("Title")
                         .setAuthor("Author")
-                        .setPublishedDate(new Date())
+                        .setPublishedDate(LocalDate.now())
                         .build()
         ));
     }

@@ -5,6 +5,7 @@ import model.builder.BookBuilder;
 import utility.JDBConnectionWrapper;
 
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -51,7 +52,7 @@ public class BookRepositoryMySQL implements BookRepository {
                     .prepareStatement("INSERT INTO book values (null, ?, ?, ?)");
             insertStatement.setString(1, book.getAuthor());
             insertStatement.setString(2, book.getTitle());
-            insertStatement.setDate(3, new java.sql.Date(book.getPublishedDate().getTime()));
+            insertStatement.setDate(3, new java.sql.Date(book.getPublishedDate().toEpochDay()));
             insertStatement.executeUpdate();
             return true;
         } catch (SQLException e) {
@@ -77,7 +78,7 @@ public class BookRepositoryMySQL implements BookRepository {
                 .setId(rs.getLong("id"))
                 .setTitle(rs.getString("title"))
                 .setAuthor(rs.getString("author"))
-                .setPublishedDate(new Date(rs.getDate("publishedDate").getTime()))
+                .setPublishedDate(LocalDate.ofEpochDay(rs.getDate("publishedDate").getTime()))
                 .build();
     }
 

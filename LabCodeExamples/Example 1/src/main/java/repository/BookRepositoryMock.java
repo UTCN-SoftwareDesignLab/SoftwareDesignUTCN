@@ -22,7 +22,7 @@ public class BookRepositoryMock implements BookRepository {
     }
 
     public Book findById(Long id) {
-        List<Book> filteredBooks = books.parallelStream()
+        List<Book> filteredBooks = books.stream()
                 .filter(it -> it.getId().equals(id))
                 .collect(Collectors.toList());
         if (filteredBooks.size() > 0) {

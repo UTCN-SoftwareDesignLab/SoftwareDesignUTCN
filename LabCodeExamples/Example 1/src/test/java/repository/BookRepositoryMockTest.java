@@ -6,7 +6,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 import static org.junit.Assert.*;
 
@@ -47,7 +47,7 @@ public class BookRepositoryMockTest {
                 .setId(1L)
                 .setTitle("Title")
                 .setAuthor("Author")
-                .setPublishedDate(new Date())
+                .setPublishedDate(LocalDate.now())
                 .build();
 
         assertTrue(repository.save(book));

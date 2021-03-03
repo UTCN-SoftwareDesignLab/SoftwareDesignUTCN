@@ -3,8 +3,8 @@ package service;
 import model.Book;
 import repository.BookRepository;
 
-import java.util.Calendar;
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 
 /**
@@ -36,15 +36,9 @@ public class BookServiceImpl implements BookService {
     @Override
     public int getAgeOfBook(Long id) {
         Book book = findById(id);
-        Date publishedDate = book.getPublishedDate();
+        LocalDate publishedDate = book.getPublishedDate();
 
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(publishedDate);
-        int yearOfPublishing = calendar.get(Calendar.YEAR);
-        calendar.setTime(new Date());
-        int yearToday = calendar.get(Calendar.YEAR);
-
-        return yearToday - yearOfPublishing;
+        return (int) ChronoUnit.YEARS.between(publishedDate.withMonth(1).atStartOfDay(), LocalDate.now().atStartOfDay());
     }
 
 

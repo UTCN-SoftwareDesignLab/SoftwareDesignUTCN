@@ -1,5 +1,6 @@
 package model;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 /**
@@ -11,7 +12,7 @@ public class Book {
 
     private String author;
     private String title;
-    private Date publishedDate;
+    private LocalDate publishedDate;
 
     public String getAuthor() {
         return author;
@@ -29,11 +30,11 @@ public class Book {
         this.title = title;
     }
 
-    public Date getPublishedDate() {
+    public LocalDate getPublishedDate() {
         return publishedDate;
     }
 
-    public void setPublishedDate(Date publishedDate) {
+    public void setPublishedDate(LocalDate publishedDate) {
         this.publishedDate = publishedDate;
     }
 
