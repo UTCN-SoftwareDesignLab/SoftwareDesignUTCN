@@ -2,7 +2,7 @@ package repository;
 
 import model.Book;
 import model.builder.BookBuilder;
-import utility.JDBConnectionWrapper;
+import database.JDBConnectionWrapper;
 
 import java.sql.*;
 import java.time.LocalDate;

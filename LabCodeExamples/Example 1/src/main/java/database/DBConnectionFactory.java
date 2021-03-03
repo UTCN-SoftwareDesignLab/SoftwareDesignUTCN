@@ -1,7 +1,5 @@
 package database;
 
-import utility.JDBConnectionWrapper;
-
 /**
  * Created by Alex on 08/03/2017.
  */
