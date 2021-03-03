@@ -1,6 +1,6 @@
 package repository;
 
-import database.DBConnectionFactory;
+import database.DatabaseConnectionFactory;
 import model.Book;
 import model.builder.BookBuilder;
 import org.junit.Before;
@@ -24,7 +24,7 @@ public class BookRepositoryMySQLTest {
     public static void setupClass() {
         bookRepository = new BookRepositoryCacheDecorator(
                 new BookRepositoryMySQL(
-                        DBConnectionFactory.getConnectionWrapper(true)
+                        DatabaseConnectionFactory.getConnectionWrapper(true)
                 ),
                 new Cache<>()
         );

@@ -3,7 +3,7 @@ package database;
 /**
  * Created by Alex on 08/03/2017.
  */
-public class DBConnectionFactory {
+public class DatabaseConnectionFactory {
 
     private static final String TEST_SCHEMA = "test_library";
     private static final String SCHEMA = "library";
