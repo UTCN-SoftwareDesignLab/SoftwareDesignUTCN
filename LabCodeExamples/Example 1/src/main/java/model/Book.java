@@ -1,7 +1,6 @@
 package model;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 /**
  * Created by Alex on 07/03/2017.
