@@ -1,14 +1,10 @@
-package repository;
+package repositories;
 
 import model.Book;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
-/**
- * Created by Alex on 07/03/2017.
- */
 public class BookRepositoryMock implements BookRepository {
 
     private final List<Book> books;
@@ -17,20 +13,19 @@ public class BookRepositoryMock implements BookRepository {
         books = new ArrayList<>();
     }
 
+    @Override
     public List<Book> findAll() {
         return books;
     }
 
+    @Override
     public Book findById(Long id) {
-        List<Book> filteredBooks = books.stream()
+        return books.stream()
                 .filter(it -> it.getId().equals(id))
-                .collect(Collectors.toList());
-        if (filteredBooks.size() > 0) {
-            return filteredBooks.get(0);
-        }
-        return null;
+                .findFirst().orElse(null);
     }
 
+    @Override
     public boolean save(Book book) {
         return books.add(book);
     }

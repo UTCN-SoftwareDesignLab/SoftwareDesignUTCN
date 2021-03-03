@@ -1,10 +1,7 @@
-package repository;
+package repositories;
 
 import java.util.List;
 
-/**
- * Created by Alex on 07/03/2017.
- */
 public class Cache<T> {
 
     private List<T> storage;
@@ -14,16 +11,15 @@ public class Cache<T> {
     }
 
     public boolean hasResult() {
-        return storage != null;
+        return this.storage != null;
     }
 
     public List<T> load() {
-        System.out.println("Loaded from cache");
-        return storage;
+        return this.storage;
     }
 
     public void invalidateCache() {
-        storage = null;
+        this.storage = null;
     }
 
 }

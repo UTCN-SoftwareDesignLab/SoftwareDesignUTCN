@@ -1,36 +1,33 @@
-package service;
+package services;
 
 import model.Book;
-import repository.BookRepository;
+import repositories.BookRepository;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
 
-/**
- * Created by Alex on 07/03/2017.
- */
 public class BookServiceImpl implements BookService {
 
-    private final BookRepository repository;
+    private final BookRepository bookRepository;
 
-    public BookServiceImpl(BookRepository repository) {
-        this.repository = repository;
+    public BookServiceImpl(BookRepository bookRepository) {
+        this.bookRepository = bookRepository;
     }
 
     @Override
     public List<Book> findAll() {
-        return repository.findAll();
+        return bookRepository.findAll();
     }
 
     @Override
     public Book findById(Long id) {
-        return repository.findById(id);
+        return bookRepository.findById(id);
     }
 
     @Override
     public boolean save(Book book) {
-        return repository.save(book);
+        return bookRepository.save(book);
     }
 
     @Override
@@ -38,8 +35,7 @@ public class BookServiceImpl implements BookService {
         Book book = findById(id);
         LocalDate publishedDate = book.getPublishedDate();
 
-        return (int) ChronoUnit.YEARS.between(publishedDate.withMonth(1).atStartOfDay(), LocalDate.now().atStartOfDay());
+        return (int) ChronoUnit.YEARS
+                .between(publishedDate.withMonth(1).atStartOfDay(), LocalDate.now().atStartOfDay());
     }
-
-
 }

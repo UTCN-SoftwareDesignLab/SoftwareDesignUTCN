@@ -1,17 +1,14 @@
-package repository;
+package repositories;
 
+import database.JDBConnectionWrapper;
 import model.Book;
 import model.builder.BookBuilder;
-import database.JDBConnectionWrapper;
 
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Alex on 07/03/2017.
- */
 public class BookRepositoryMySQL implements BookRepository {
 
     private final JDBConnectionWrapper connectionWrapper;
@@ -23,17 +20,19 @@ public class BookRepositoryMySQL implements BookRepository {
     @Override
     public List<Book> findAll() {
         Connection connection = connectionWrapper.getConnection();
+        String sql = "Select * from book";
+
         List<Book> books = new ArrayList<>();
+
         try {
             Statement statement = connection.createStatement();
-            String sql = "Select * from book";
-            ResultSet rs = statement.executeQuery(sql);
+            ResultSet resultSet = statement.executeQuery(sql);
 
-            while (rs.next()) {
-                books.add(getBookFromResultSet(rs));
+            while (resultSet.next()) {
+                books.add(getBookFromResultSet(resultSet));
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
         }
 
         return books;
@@ -47,16 +46,17 @@ public class BookRepositoryMySQL implements BookRepository {
     @Override
     public boolean save(Book book) {
         Connection connection = connectionWrapper.getConnection();
+        String sql = "INSERT INTO book values (null, ?, ?, ?)";
+
         try {
             PreparedStatement insertStatement = connection
-                    .prepareStatement("INSERT INTO book values (null, ?, ?, ?)");
+                    .prepareStatement(sql);
             insertStatement.setString(1, book.getAuthor());
             insertStatement.setString(2, book.getTitle());
             insertStatement.setDate(3, new java.sql.Date(book.getPublishedDate().toEpochDay()));
             insertStatement.executeUpdate();
             return true;
         } catch (SQLException e) {
-            e.printStackTrace();
             return false;
         }
     }
@@ -64,13 +64,16 @@ public class BookRepositoryMySQL implements BookRepository {
     @Override
     public void removeAll() {
         Connection connection = connectionWrapper.getConnection();
+        String sql = "DELETE from book where id >= 0";
+
         try {
             Statement statement = connection.createStatement();
-            String sql = "DELETE from book where id >= 0";
             statement.executeUpdate(sql);
-        } catch (SQLException e) {
-            e.printStackTrace();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
         }
+
+
     }
 
     private Book getBookFromResultSet(ResultSet rs) throws SQLException {
@@ -81,5 +84,4 @@ public class BookRepositoryMySQL implements BookRepository {
                 .setPublishedDate(LocalDate.ofEpochDay(rs.getDate("publishedDate").getTime()))
                 .build();
     }
-
 }

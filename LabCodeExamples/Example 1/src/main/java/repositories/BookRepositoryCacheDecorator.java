@@ -1,19 +1,16 @@
-package repository;
+package repositories;
 
 import model.Book;
 
 import java.util.List;
 
-/**
- * Created by Alex on 07/03/2017.
- */
 public class BookRepositoryCacheDecorator extends BookRepositoryDecorator {
 
     private final Cache<Book> cache;
 
-    public BookRepositoryCacheDecorator(BookRepository bookRepository, Cache<Book> cache) {
+    public BookRepositoryCacheDecorator(BookRepository bookRepository) {
         super(bookRepository);
-        this.cache = cache;
+        cache = new Cache<>();
     }
 
     @Override
@@ -21,9 +18,9 @@ public class BookRepositoryCacheDecorator extends BookRepositoryDecorator {
         if (cache.hasResult()) {
             return cache.load();
         }
-        List<Book> books = decoratedRepository.findAll();
-        cache.save(books);
-        return books;
+        List<Book> allBooks = decoratedRepository.findAll();
+        cache.save(allBooks);
+        return allBooks;
     }
 
     @Override
@@ -33,8 +30,11 @@ public class BookRepositoryCacheDecorator extends BookRepositoryDecorator {
 
     @Override
     public boolean save(Book book) {
-        cache.invalidateCache();
-        return decoratedRepository.save(book);
+        boolean somethingChanged = decoratedRepository.save(book);
+        if (somethingChanged) {
+            cache.invalidateCache();
+        }
+        return somethingChanged;
     }
 
     @Override

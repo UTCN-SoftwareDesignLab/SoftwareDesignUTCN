@@ -1,8 +1,5 @@
-package repository;
+package repositories;
 
-/**
- * Created by Alex on 07/03/2017.
- */
 public abstract class BookRepositoryDecorator implements BookRepository {
 
     protected BookRepository decoratedRepository;
