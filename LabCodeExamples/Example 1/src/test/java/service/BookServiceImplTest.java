@@ -26,18 +26,18 @@ public class BookServiceImplTest {
     }
 
     @Test
-    public void findAll() throws Exception {
+    public void findAll() {
         assertEquals(0, service.findAll().size());
     }
 
     @Test
-    public void findById() throws Exception {
+    public void findById() {
         Long id = 1L;
         assertNull(service.findById(id));
     }
 
     @Test
-    public void save() throws Exception {
+    public void save() {
         assertTrue(service.save(new Book()));
     }
 

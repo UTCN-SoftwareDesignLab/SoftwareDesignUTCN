@@ -24,7 +24,7 @@ public class BookRepositoryMySQLTest {
     public static void setupClass() {
         bookRepository = new BookRepositoryCacheDecorator(
                 new BookRepositoryMySQL(
-                        new DBConnectionFactory().getConnectionWrapper(true)
+                        DBConnectionFactory.getConnectionWrapper(true)
                 ),
                 new Cache<>()
         );
@@ -36,13 +36,13 @@ public class BookRepositoryMySQLTest {
     }
 
     @Test
-    public void findAll() throws Exception {
+    public void findAll() {
         List<Book> books = bookRepository.findAll();
         assertEquals(books.size(), 0);
     }
 
     @Test
-    public void findAllWhenDbNotEmpty() throws Exception {
+    public void findAllWhenDbNotEmpty() {
         Book book = new BookBuilder()
                 .setTitle("Title")
                 .setAuthor("Author")
@@ -57,12 +57,12 @@ public class BookRepositoryMySQLTest {
     }
 
     @Test
-    public void findById() throws Exception {
+    public void findById() {
 
     }
 
     @Test
-    public void save() throws Exception {
+    public void save() {
         assertTrue(bookRepository.save(
                 new BookBuilder()
                         .setTitle("Title")
@@ -73,7 +73,7 @@ public class BookRepositoryMySQLTest {
     }
 
     @Test
-    public void removeAll() throws Exception {
+    public void removeAll() {
 
     }
 

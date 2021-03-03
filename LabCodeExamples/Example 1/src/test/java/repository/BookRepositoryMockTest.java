@@ -26,23 +26,23 @@ public class BookRepositoryMockTest {
     }
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
 
     }
 
     @Test
-    public void findAll() throws Exception {
+    public void findAll() {
         assertEquals(0, repository.findAll().size());
     }
 
     @Test
-    public void findById() throws Exception {
+    public void findById() {
         Book book = repository.findById(1L);
         assertNull(book);
     }
 
     @Test
-    public void save() throws Exception {
+    public void save() {
         Book book = new BookBuilder()
                 .setId(1L)
                 .setTitle("Title")

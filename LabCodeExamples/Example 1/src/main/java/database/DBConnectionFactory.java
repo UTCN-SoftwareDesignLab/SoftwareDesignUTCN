@@ -7,11 +7,14 @@ import utility.JDBConnectionWrapper;
  */
 public class DBConnectionFactory {
 
-    public JDBConnectionWrapper getConnectionWrapper(boolean test) {
+    private static final String TEST_SCHEMA = "test_library";
+    private static final String SCHEMA = "library";
+
+    public static JDBConnectionWrapper getConnectionWrapper(boolean test) {
         if (test) {
-            return new JDBConnectionWrapper("test_library");
+            return new JDBConnectionWrapper(TEST_SCHEMA);
         }
-        return new JDBConnectionWrapper("library");
+        return new JDBConnectionWrapper(SCHEMA);
     }
 
 }
