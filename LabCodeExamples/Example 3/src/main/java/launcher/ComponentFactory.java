@@ -1,5 +1,8 @@
+package launcher;
+
 import controller.LoginController;
 import database.DBConnectionFactory;
+import repository.book.BookRepositoryMySQL;
 import repository.security.RightsRolesRepository;
 import repository.security.RightsRolesRepositoryMySQL;
 import repository.user.UserRepository;
@@ -23,6 +26,7 @@ public class ComponentFactory {
 
     private final UserRepository userRepository;
     private final RightsRolesRepository rightsRolesRepository;
+    private final BookRepositoryMySQL bookRepositoryMySQL;
 
     private static ComponentFactory instance;
 
@@ -40,6 +44,7 @@ public class ComponentFactory {
         this.authenticationService = new AuthenticationServiceMySQL(this.userRepository, this.rightsRolesRepository);
         this.loginView = new LoginView();
         this.loginController = new LoginController(loginView, authenticationService);
+        bookRepositoryMySQL = new BookRepositoryMySQL(connection);
     }
 
     public AuthenticationService getAuthenticationService() {
@@ -56,5 +61,9 @@ public class ComponentFactory {
 
     public LoginView getLoginView() {
         return loginView;
+    }
+
+    public BookRepositoryMySQL getBookRepositoryMySQL() {
+        return bookRepositoryMySQL;
     }
 }

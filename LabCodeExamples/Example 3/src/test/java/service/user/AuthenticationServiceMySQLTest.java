@@ -1,17 +1,12 @@
 package service.user;
 
-import database.DBConnectionFactory;
+import launcher.ComponentFactory;
 import model.User;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import repository.security.RightsRolesRepository;
-import repository.security.RightsRolesRepositoryMySQL;
 import repository.user.UserRepository;
-import repository.user.UserRepositoryMySQL;
-
-import java.sql.Connection;
 
 /**
  * Created by Alex on 11/03/2017.
@@ -25,14 +20,9 @@ public class AuthenticationServiceMySQLTest {
 
     @BeforeClass
     public static void setUp() {
-        Connection connection = new DBConnectionFactory().getConnectionWrapper(true).getConnection();
-        RightsRolesRepository rightsRolesRepository = new RightsRolesRepositoryMySQL(connection);
-        userRepository = new UserRepositoryMySQL(connection, rightsRolesRepository);
-
-        authenticationService = new AuthenticationServiceMySQL(
-                userRepository,
-                rightsRolesRepository
-        );
+        ComponentFactory componentFactory = ComponentFactory.instance(true);
+        userRepository = componentFactory.getUserRepository();
+        authenticationService = componentFactory.getAuthenticationService();
     }
 
     @Before
@@ -42,7 +32,7 @@ public class AuthenticationServiceMySQLTest {
 
 
     @Test
-    public void register() throws Exception {
+    public void register() {
         Assert.assertTrue(
                 authenticationService.register(TEST_USERNAME, TEST_PASSWORD).getResult()
         );
@@ -50,13 +40,13 @@ public class AuthenticationServiceMySQLTest {
 
     @Test
     public void login() throws Exception {
-        authenticationService.register(TEST_USERNAME, TEST_PASSWORD).getResult();
+        authenticationService.register(TEST_USERNAME, TEST_PASSWORD);
         User user = authenticationService.login(TEST_USERNAME, TEST_PASSWORD).getResult();
         Assert.assertNotNull(user);
     }
 
     @Test
-    public void logout() throws Exception {
+    public void logout() {
 
     }
 

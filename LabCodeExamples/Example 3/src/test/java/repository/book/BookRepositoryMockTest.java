@@ -10,6 +10,7 @@ import repository.EntityNotFoundException;
 
 import java.util.Date;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 /**
@@ -28,13 +29,13 @@ public class BookRepositoryMockTest {
     }
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
 
     }
 
     @Test
     public void findAll() throws Exception {
-        assertTrue(repository.findAll().size() == 0);
+        assertEquals(0, repository.findAll().size());
     }
 
     @Test(expected = EntityNotFoundException.class)

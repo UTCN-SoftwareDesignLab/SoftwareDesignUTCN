@@ -1,3 +1,5 @@
+package launcher;
+
 import database.Boostraper;
 
 import java.sql.SQLException;

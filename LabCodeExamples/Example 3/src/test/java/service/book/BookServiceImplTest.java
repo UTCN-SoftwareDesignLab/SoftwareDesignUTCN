@@ -22,7 +22,7 @@ public class BookServiceImplTest {
     }
 
     @Test
-    public void findAll() throws Exception {
+    public void findAll() {
         assertEquals(0, bookService.findAll().size());
     }
 
@@ -32,7 +32,7 @@ public class BookServiceImplTest {
     }
 
     @Test
-    public void save() throws Exception {
+    public void save() {
         assertTrue(bookService.save(new Book()));
     }
 

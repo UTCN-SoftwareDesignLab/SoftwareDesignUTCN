@@ -1,6 +1,6 @@
 package repository.book;
 
-import database.DBConnectionFactory;
+import launcher.ComponentFactory;
 import model.Book;
 import model.builder.BookBuilder;
 import org.junit.Before;
@@ -23,10 +23,10 @@ public class BookRepositoryMySQLTest {
 
     @BeforeClass
     public static void setupClass() {
+        ComponentFactory componentFactory = ComponentFactory.instance(true);
+
         bookRepository = new BookRepositoryCacheDecorator(
-                new BookRepositoryMySQL(
-                        new DBConnectionFactory().getConnectionWrapper(true).getConnection()
-                ),
+                componentFactory.getBookRepositoryMySQL(),
                 new Cache<>()
         );
     }
@@ -58,12 +58,12 @@ public class BookRepositoryMySQLTest {
     }
 
     @Test
-    public void findById() throws Exception {
+    public void findById() {
 
     }
 
     @Test
-    public void save() throws Exception {
+    public void save() {
         assertTrue(bookRepository.save(
                 new BookBuilder()
                         .setTitle("Title")
@@ -74,7 +74,7 @@ public class BookRepositoryMySQLTest {
     }
 
     @Test
-    public void removeAll() throws Exception {
+    public void removeAll() {
 
     }
 
