@@ -49,6 +49,7 @@ public class LoginController {
             String password = loginView.getPassword();
 
             Notification<Boolean> registerNotification = authenticationService.register(username, password);
+
             if (registerNotification.hasErrors()) {
                 JOptionPane.showMessageDialog(loginView.getContentPane(), registerNotification.getFormattedErrors());
             } else {
