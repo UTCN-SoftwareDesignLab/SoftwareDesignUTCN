@@ -12,10 +12,9 @@ public class Launcher {
     public static boolean BOOTSTRAP = false;
 
     public static void main(String[] args) {
-        ComponentFactory componentFactory = ComponentFactory.instance(false);
-
         bootstrap();
 
+        ComponentFactory componentFactory = ComponentFactory.instance(false);
         componentFactory.getLoginView().setVisible();
     }
 
