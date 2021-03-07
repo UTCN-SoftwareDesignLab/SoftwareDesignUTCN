@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 public class Notification<T> {
 
     private T result;
-    private List<String> errors;
+    private final List<String> errors;
 
     public Notification() {
         this.errors = new ArrayList<>();
