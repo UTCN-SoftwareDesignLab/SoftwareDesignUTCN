@@ -2,7 +2,6 @@ package controller;
 
 import model.User;
 import model.validation.Notification;
-import repository.user.AuthenticationException;
 import service.user.AuthenticationService;
 import view.LoginView;
 
@@ -32,12 +31,7 @@ public class LoginController {
             String username = loginView.getUsername();
             String password = loginView.getPassword();
 
-            Notification<User> loginNotification = null;
-            try {
-                loginNotification = authenticationService.login(username, password);
-            } catch (AuthenticationException e1) {
-                e1.printStackTrace();
-            }
+            Notification<User> loginNotification = authenticationService.login(username, password);
 
             if (Objects.requireNonNull(loginNotification).hasErrors()) {
                 JOptionPane.showMessageDialog(loginView.getContentPane(), loginNotification.getFormattedErrors());

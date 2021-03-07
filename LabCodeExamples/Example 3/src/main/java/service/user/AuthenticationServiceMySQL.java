@@ -6,7 +6,6 @@ import model.builder.UserBuilder;
 import model.validation.Notification;
 import model.validation.UserValidator;
 import repository.security.RightsRolesRepository;
-import repository.user.AuthenticationException;
 import repository.user.UserRepository;
 
 import java.nio.charset.StandardCharsets;
@@ -52,7 +51,7 @@ public class AuthenticationServiceMySQL implements AuthenticationService {
     }
 
     @Override
-    public Notification<User> login(String username, String password) throws AuthenticationException {
+    public Notification<User> login(String username, String password) {
         return userRepository.findByUsernameAndPassword(username, encodePassword(password));
     }
 

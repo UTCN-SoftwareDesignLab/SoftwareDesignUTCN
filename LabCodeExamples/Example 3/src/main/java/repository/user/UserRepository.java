@@ -12,7 +12,7 @@ public interface UserRepository {
 
     List<User> findAll();
 
-    Notification<User> findByUsernameAndPassword(String username, String password) throws AuthenticationException;
+    Notification<User> findByUsernameAndPassword(String username, String password);
 
     boolean save(User user);
 

@@ -30,7 +30,7 @@ public class UserRepositoryMySQL implements UserRepository {
     }
 
     @Override
-    public Notification<User> findByUsernameAndPassword(String username, String password) throws AuthenticationException {
+    public Notification<User> findByUsernameAndPassword(String username, String password) {
         Notification<User> findByUsernameAndPasswordNotification = new Notification<>();
         try {
             Statement statement = connection.createStatement();
@@ -50,8 +50,9 @@ public class UserRepositoryMySQL implements UserRepository {
             }
         } catch (SQLException e) {
             e.printStackTrace();
-            throw new AuthenticationException();
+            findByUsernameAndPasswordNotification.addError("Something is wrong with the Database");
         }
+        return findByUsernameAndPasswordNotification;
     }
 
     @Override
