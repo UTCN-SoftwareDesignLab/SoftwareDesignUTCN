@@ -66,4 +66,8 @@ public class ComponentFactory {
     public BookRepositoryMySQL getBookRepositoryMySQL() {
         return bookRepositoryMySQL;
     }
+
+    public LoginController getLoginController() {
+        return loginController;
+    }
 }

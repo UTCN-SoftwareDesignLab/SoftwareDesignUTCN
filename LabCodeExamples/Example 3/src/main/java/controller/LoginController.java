@@ -8,7 +8,6 @@ import view.LoginView;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Objects;
 
 /**
  * Created by Alex on 18/03/2017.
@@ -33,7 +32,7 @@ public class LoginController {
 
             Notification<User> loginNotification = authenticationService.login(username, password);
 
-            if (Objects.requireNonNull(loginNotification).hasErrors()) {
+            if (loginNotification.hasErrors()) {
                 JOptionPane.showMessageDialog(loginView.getContentPane(), loginNotification.getFormattedErrors());
             } else {
                 JOptionPane.showMessageDialog(loginView.getContentPane(), "Login successful!");
