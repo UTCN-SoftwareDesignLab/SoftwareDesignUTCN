@@ -26,7 +26,6 @@ public class LoginView extends JFrame {
         add(btnLogin);
         add(btnRegister);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        setVisible(true);
     }
 
     private void initializeFields() {
@@ -50,6 +49,10 @@ public class LoginView extends JFrame {
 
     public void setRegisterButtonListener(ActionListener registerButtonListener) {
         btnRegister.addActionListener(registerButtonListener);
+    }
+
+    public void setVisible() {
+        this.setVisible(true);
     }
 
 }

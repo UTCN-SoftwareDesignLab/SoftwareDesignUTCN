@@ -18,11 +18,11 @@ import static database.Constants.getRolesRights;
 /**
  * Created by Alex on 11/03/2017.
  */
-public class Boostrap {
+public class Boostraper {
 
-    private static RightsRolesRepository rightsRolesRepository;
+    private RightsRolesRepository rightsRolesRepository;
 
-    public static void main(String[] args) throws SQLException {
+    public void execute() throws SQLException {
         dropAll();
 
         bootstrapTables();
@@ -30,7 +30,7 @@ public class Boostrap {
         bootstrapUserData();
     }
 
-    private static void dropAll() throws SQLException {
+    private void dropAll() throws SQLException {
         for (String schema : SCHEMAS) {
             System.out.println("Dropping all tables in schema: " + schema);
 
@@ -59,7 +59,7 @@ public class Boostrap {
         System.out.println("Done table bootstrap");
     }
 
-    private static void bootstrapTables() throws SQLException {
+    private void bootstrapTables() throws SQLException {
         SQLTableCreationFactory sqlTableCreationFactory = new SQLTableCreationFactory();
 
         for (String schema : SCHEMAS) {
@@ -80,7 +80,7 @@ public class Boostrap {
         System.out.println("Done table bootstrap");
     }
 
-    private static void bootstrapUserData() throws SQLException {
+    private void bootstrapUserData() {
         for (String schema : SCHEMAS) {
             System.out.println("Bootstrapping user data for " + schema);
 
@@ -94,19 +94,19 @@ public class Boostrap {
         }
     }
 
-    private static void bootstrapRoles() throws SQLException {
+    private void bootstrapRoles() {
         for (String role : ROLES) {
             rightsRolesRepository.addRole(role);
         }
     }
 
-    private static void bootstrapRights() throws SQLException {
+    private void bootstrapRights() {
         for (String right : RIGHTS) {
             rightsRolesRepository.addRight(right);
         }
     }
 
-    private static void bootstrapRoleRight() throws SQLException {
+    private void bootstrapRoleRight() {
         Map<String, List<String>> rolesRights = getRolesRights();
 
         for (String role : rolesRights.keySet()) {
@@ -120,7 +120,7 @@ public class Boostrap {
         }
     }
 
-    private static void bootstrapUserRoles() throws SQLException {
+    private void bootstrapUserRoles() {
 
     }
 }

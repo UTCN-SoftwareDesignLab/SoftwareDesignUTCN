@@ -1,3 +1,4 @@
+import controller.LoginController;
 import database.DBConnectionFactory;
 import repository.security.RightsRolesRepository;
 import repository.security.RightsRolesRepositoryMySQL;
@@ -5,6 +6,7 @@ import repository.user.UserRepository;
 import repository.user.UserRepositoryMySQL;
 import service.user.AuthenticationService;
 import service.user.AuthenticationServiceMySQL;
+import view.LoginView;
 
 import java.sql.Connection;
 
@@ -12,6 +14,10 @@ import java.sql.Connection;
  * Created by Alex on 18/03/2017.
  */
 public class ComponentFactory {
+
+    private final LoginView loginView;
+
+    private final LoginController loginController;
 
     private final AuthenticationService authenticationService;
 
@@ -32,6 +38,8 @@ public class ComponentFactory {
         this.rightsRolesRepository = new RightsRolesRepositoryMySQL(connection);
         this.userRepository = new UserRepositoryMySQL(connection, rightsRolesRepository);
         this.authenticationService = new AuthenticationServiceMySQL(this.userRepository, this.rightsRolesRepository);
+        this.loginView = new LoginView();
+        this.loginController = new LoginController(loginView, authenticationService);
     }
 
     public AuthenticationService getAuthenticationService() {
@@ -44,5 +52,9 @@ public class ComponentFactory {
 
     public RightsRolesRepository getRightsRolesRepository() {
         return rightsRolesRepository;
+    }
+
+    public LoginView getLoginView() {
+        return loginView;
     }
 }
