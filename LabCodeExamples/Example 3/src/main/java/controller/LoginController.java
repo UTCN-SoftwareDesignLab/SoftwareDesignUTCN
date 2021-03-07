@@ -9,6 +9,7 @@ import view.LoginView;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Objects;
 
 /**
  * Created by Alex on 18/03/2017.
@@ -38,12 +39,10 @@ public class LoginController {
                 e1.printStackTrace();
             }
 
-            if (loginNotification != null) {
-                if (loginNotification.hasErrors()) {
-                    JOptionPane.showMessageDialog(loginView.getContentPane(), loginNotification.getFormattedErrors());
-                } else {
-                    JOptionPane.showMessageDialog(loginView.getContentPane(), "Login successful!");
-                }
+            if (Objects.requireNonNull(loginNotification).hasErrors()) {
+                JOptionPane.showMessageDialog(loginView.getContentPane(), loginNotification.getFormattedErrors());
+            } else {
+                JOptionPane.showMessageDialog(loginView.getContentPane(), "Login successful!");
             }
         }
     }
