@@ -36,7 +36,7 @@ public class Notification<T> {
     }
 
     public String getFormattedErrors() {
-        return errors.stream().map(Object::toString).collect(Collectors.joining("\n"));
+        return String.join("\n", errors);
     }
 
 }
