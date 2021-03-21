@@ -5,7 +5,7 @@
         <v-container class="text-xs-center">
           <v-card flat>
             <v-card-title primary-title>
-              <h4 v-if="mode === 'login'">Login</h4>
+              <h4 v-if="inLoginMode">Login</h4>
               <h4 v-else>Register</h4>
             </v-card-title>
             <v-form>
@@ -35,7 +35,7 @@
               ></v-text-field>
               <v-card-actions>
                 <v-container>
-                  <v-layout v-if="mode === 'login'" row justify-center>
+                  <v-layout v-if="inLoginMode" row justify-center>
                     <v-btn primary large block @click="attemptLogin"
                       >Login</v-btn
                     >
@@ -52,6 +52,10 @@
                       Already registered? Click to login!
                     </v-btn>
                   </v-layout>
+
+                  <v-layout v-if="isLoggedIn" row justify-center>
+                    <v-btn @click="logout"> Logout </v-btn>
+                  </v-layout>
                 </v-container>
               </v-card-actions>
             </v-form>
@@ -63,8 +67,6 @@
 </template>
 
 <script>
-import api from "../api";
-
 export default {
   name: "HelloWorld",
 
@@ -72,19 +74,32 @@ export default {
     mode: "login",
     login: {
       email: "",
-      username: "",
-      password: "",
+      username: "username1",
+      password: "password",
     },
   }),
   methods: {
-    attemptLogin() {
-      api.auth.login(this.login);
+    async attemptLogin() {
+      await this.$store.dispatch("auth/login", this.login);
+      console.log(this.$store.state.auth.user);
     },
-    attemptRegister() {
-      api.auth.register(this.login);
+    async attemptRegister() {
+      let res = await this.$store.dispatch("auth/register", this.login);
+      console.log(res);
     },
     toggleMode() {
       this.mode = this.mode === "login" ? "register" : "login";
+    },
+    logout() {
+      this.$store.dispatch("auth/logout");
+    },
+  },
+  computed: {
+    isLoggedIn: function () {
+      return this.$store.state.auth.status.loggedIn;
+    },
+    inLoginMode: function () {
+      return this.mode === "login";
     },
   },
 };
