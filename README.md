@@ -43,7 +43,7 @@
 - [Setup VUE CLI (Indian powa!)](https://www.youtube.com/watch?v=eMis3LaRYY8)
 - [Setup VUE CLI 2 - using GUI](https://cli.vuejs.org/guide/creating-a-project.html#using-the-gui)
 - [VUE Crash Course](https://www.youtube.com/watch?v=qZXt1Aom3Cs)
-- + you already have a working setup - use that! when you need something, try to google your way into finding the answer (or ask me)
+- you already have a working setup - use that! when you need something, try to google your way into finding the answer (or ask me)
 
 ### Lab 6:
 - [Dynamic Dependency Injection with Spring Boot](https://github.com/UTCN-SoftwareDesignLab/SoftwareDesignUTCN/tree/master/LabCodeExamples/Example%205%20-%20Spring%20%232%20(%2Bfrontend))
