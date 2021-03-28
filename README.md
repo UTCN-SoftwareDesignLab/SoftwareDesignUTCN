@@ -56,7 +56,7 @@
   - https://angular.io/tutorial (free)
   - https://www.udemy.com/course/the-complete-guide-to-angular-2/ (paid)
 
--React:
+- React:
   - https://reactjs.org/tutorial/tutorial.html
   - https://reactjs.org/docs/components-and-props.html
   - https://reactjs.org/docs/hooks-intro.html
