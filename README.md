@@ -46,24 +46,23 @@
 
 
 ### Frontend Framework resources:
-1) VUE:
-- [Setup NPM (stop after doing that)](https://www.youtube.com/watch?v=pD94EojHEsc)
-- [Setup VUE CLI (Indian powa!)](https://www.youtube.com/watch?v=eMis3LaRYY8)
-- [Setup VUE CLI 2 - using GUI](https://cli.vuejs.org/guide/creating-a-project.html#using-the-gui)
-- [VUE Crash Course](https://www.youtube.com/watch?v=qZXt1Aom3Cs)
-2) Angular:
-- https://angular.io/tutorial (free)
-- https://www.udemy.com/course/the-complete-guide-to-angular-2/ (paid)
-3) React:
+- VUE:
+  - [Setup NPM (stop after doing that)](https://www.youtube.com/watch?v=pD94EojHEsc)
+  - [Setup VUE CLI (Indian powa!)](https://www.youtube.com/watch?v=eMis3LaRYY8)
+  - [Setup VUE CLI 2 - using GUI](https://cli.vuejs.org/guide/creating-a-project.html#using-the-gui)
+  - [VUE Crash Course](https://www.youtube.com/watch?v=qZXt1Aom3Cs)
 
-![image](https://user-images.githubusercontent.com/5063160/112763231-42397080-900c-11eb-9326-7057c7e1ad4e.png)
+- Angular:
+  - https://angular.io/tutorial (free)
+  - https://www.udemy.com/course/the-complete-guide-to-angular-2/ (paid)
 
-- https://reactjs.org/tutorial/tutorial.html
-- https://reactjs.org/docs/components-and-props.html
-- https://reactjs.org/docs/hooks-intro.html
-- https://nextjs.org/learn/basics/create-nextjs-app
-- https://www.gatsbyjs.com/docs/tutorial/
-- https://github.com/enaqx/awesome-react
+-React:
+  - https://reactjs.org/tutorial/tutorial.html
+  - https://reactjs.org/docs/components-and-props.html
+  - https://reactjs.org/docs/hooks-intro.html
+  - https://nextjs.org/learn/basics/create-nextjs-app
+  - https://www.gatsbyjs.com/docs/tutorial/
+  - https://github.com/enaqx/awesome-react
 
 
 [**](https://www.youtube.com/watch?v=6GMkuPiIZ2k)
