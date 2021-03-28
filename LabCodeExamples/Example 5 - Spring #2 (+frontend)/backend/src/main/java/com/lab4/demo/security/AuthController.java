@@ -27,9 +27,7 @@ import static com.lab4.demo.UrlMapping.*;
 public class AuthController {
 
     private final AuthenticationManager authenticationManager;
-
     private final AuthService authService;
-
     private final JwtUtils jwtUtils;
 
     @PostMapping(SIGN_IN)
