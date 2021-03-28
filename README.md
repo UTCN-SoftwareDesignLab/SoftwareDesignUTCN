@@ -46,6 +46,7 @@
 
 ### Lab 6:
 - [Dynamic Dependency Injection with Spring Boot](https://github.com/UTCN-SoftwareDesignLab/SoftwareDesignUTCN/tree/master/LabCodeExamples/Example%205%20-%20Spring%20%232%20(%2Bfrontend))
+- [**SECOND ASSIGNMENT GIT LINK**](https://classroom.github.com/assignment-invitations/e9b73f5ad86f762c9749f10eb97ec632)
 
 
 [**](https://www.youtube.com/watch?v=6GMkuPiIZ2k)
