@@ -45,6 +45,8 @@
 - [VUE Crash Course](https://www.youtube.com/watch?v=qZXt1Aom3Cs)
 - + you already have a working setup - use that! when you need something, try to google your way into finding the answer (or ask me)
 
+### Lab 6:
+- [Dynamic Dependency Injection with Spring Boot](https://github.com/UTCN-SoftwareDesignLab/SoftwareDesignUTCN/tree/master/LabCodeExamples/Example%205%20-%20Spring%20%232%20(%2Bfrontend))
 
 
 [**](https://www.youtube.com/watch?v=6GMkuPiIZ2k)
