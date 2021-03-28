@@ -55,7 +55,9 @@
 - https://angular.io/tutorial (free)
 - https://www.udemy.com/course/the-complete-guide-to-angular-2/ (paid)
 3) React:
+
 ![image](https://user-images.githubusercontent.com/5063160/112763231-42397080-900c-11eb-9326-7057c7e1ad4e.png)
+
 - https://reactjs.org/tutorial/tutorial.html
 - https://reactjs.org/docs/components-and-props.html
 - https://reactjs.org/docs/hooks-intro.html
