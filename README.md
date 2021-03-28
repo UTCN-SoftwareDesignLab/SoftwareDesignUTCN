@@ -61,7 +61,6 @@
   - https://reactjs.org/docs/components-and-props.html
   - https://reactjs.org/docs/hooks-intro.html
   - https://nextjs.org/learn/basics/create-nextjs-app
-  - https://www.gatsbyjs.com/docs/tutorial/
   - https://github.com/enaqx/awesome-react
 
 
