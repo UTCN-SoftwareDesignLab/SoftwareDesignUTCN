@@ -61,6 +61,6 @@
   - https://reactjs.org/docs/components-and-props.html
   - https://reactjs.org/docs/hooks-intro.html
   - https://github.com/enaqx/awesome-react
-
+  - https://fullstackopen.com/en/
 
 [**](https://www.youtube.com/watch?v=6GMkuPiIZ2k)
