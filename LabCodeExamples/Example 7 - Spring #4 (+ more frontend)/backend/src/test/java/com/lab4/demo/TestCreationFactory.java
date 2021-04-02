@@ -1,6 +1,7 @@
 package com.lab4.demo;
 
 import com.lab4.demo.frontoffice.model.Item;
+import com.lab4.demo.frontoffice.model.dto.ItemDTO;
 import com.lab4.demo.user.dto.UserListDTO;
 
 import java.util.List;
@@ -27,6 +28,8 @@ public class TestCreationFactory {
             supplier = TestCreationFactory::newUserListDTO;
         } else if (cls.equals(Item.class)) {
             supplier = TestCreationFactory::newItem;
+        } else if (cls.equals(ItemDTO.class)) {
+            supplier = TestCreationFactory::newItemDTO;
         } else {
             supplier = () -> new String("You failed.");
         }
@@ -54,6 +57,13 @@ public class TestCreationFactory {
                 .build();
     }
 
+    private static ItemDTO newItemDTO() {
+        return ItemDTO.builder()
+                .id(randomLong())
+                .name(randomString())
+                .description(randomString())
+                .build();
+    }
 
     public static String randomEmail() {
         return randomString() + "@" + randomString() + ".com";

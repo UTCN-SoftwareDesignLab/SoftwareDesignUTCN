@@ -2,6 +2,7 @@ package com.lab4.demo.frontoffice;
 
 import com.lab4.demo.TestCreationFactory;
 import com.lab4.demo.frontoffice.model.Item;
+import com.lab4.demo.frontoffice.model.dto.ItemDTO;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -29,7 +30,7 @@ class ItemServiceIntegrationTest {
         List<Item> items = TestCreationFactory.listOf(Item.class);
         itemRepository.saveAll(items);
 
-        List<Item> all = itemService.findAll();
+        List<ItemDTO> all = itemService.findAll();
 
         Assertions.assertEquals(items.size(), all.size());
     }

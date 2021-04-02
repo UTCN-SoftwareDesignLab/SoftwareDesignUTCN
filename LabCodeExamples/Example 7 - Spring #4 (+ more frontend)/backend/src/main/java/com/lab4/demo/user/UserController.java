@@ -2,7 +2,6 @@ package com.lab4.demo.user;
 
 import com.lab4.demo.user.dto.UserListDTO;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -11,7 +10,6 @@ import java.util.List;
 
 import static com.lab4.demo.UrlMapping.USER;
 
-@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping(USER)
 @RequiredArgsConstructor

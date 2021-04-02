@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.lab4.demo.BaseControllerTest;
 import com.lab4.demo.TestCreationFactory;
 import com.lab4.demo.frontoffice.model.Item;
+import com.lab4.demo.frontoffice.model.dto.ItemDTO;
 import com.lab4.demo.report.CSVReportService;
 import com.lab4.demo.report.PdfReportService;
 import com.lab4.demo.report.ReportServiceFactory;
@@ -51,7 +52,7 @@ class FrontOfficeControllerTest extends BaseControllerTest {
 
     @Test
     void allItems() throws Exception {
-        List<Item> items = TestCreationFactory.listOf(Item.class);
+        List<ItemDTO> items = TestCreationFactory.listOf(Item.class);
         when(itemService.findAll()).thenReturn(items);
 
         ResultActions response = mockMvc.perform(get(FRONT_OFFICE));
