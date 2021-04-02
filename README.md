@@ -4,7 +4,6 @@
 - [Lab Schedule (_"More like what you'd call guidelines than actual rules**"_)](https://github.com/SoftwareDesign2017/SoftwareDesign2017/blob/master/Resources/Schedule.pdf)
 - [Project related documents](https://github.com/SoftwareDesign2017/SoftwareDesign2017/tree/master/Resources/Projects)
 - [List of example projects](https://github.com/SoftwareDesign2017/SoftwareDesign2017/blob/master/Resources/Projects/Projects%20List%20examples.doc) **(you will not be allowed to pick anything from this list, instead, you'll have to come up with your own ideas)**
-- [Excel file with attendance and project specifications](https://github.com/UTCN-SoftwareDesignLab/SoftwareDesignUTCN/blob/master/Resources/Projects/Projects%20List%20examples.pdf)
 
 ### Lab 1:
 - [Example 0 - SOLID principles](https://github.com/UTCN-SoftwareDesignLab/SoftwareDesignUTCN/tree/master/LabCodeExamples/SOLID%20Lab)
@@ -39,12 +38,29 @@
 
 ### Lab 5:
 - [Spring with Spring Security + VUE!](https://github.com/UTCN-SoftwareDesignLab/SoftwareDesignUTCN/tree/master/LabCodeExamples/Example%205%20-%20Spring%20%232%20(%2Bfrontend))
-- [Setup NPM (stop after doing that)](https://www.youtube.com/watch?v=pD94EojHEsc)
-- [Setup VUE CLI (Indian powa!)](https://www.youtube.com/watch?v=eMis3LaRYY8)
-- [Setup VUE CLI 2 - using GUI](https://cli.vuejs.org/guide/creating-a-project.html#using-the-gui)
-- [VUE Crash Course](https://www.youtube.com/watch?v=qZXt1Aom3Cs)
-- + you already have a working setup - use that! when you need something, try to google your way into finding the answer (or ask me)
+- you already have a working setup - use that! when you need something, try to google your way into finding the answer (or ask me)
+
+### Lab 6:
+- [Dynamic Dependency Injection with Spring Boot](https://github.com/UTCN-SoftwareDesignLab/SoftwareDesignUTCN/tree/master/LabCodeExamples/Example%205%20-%20Spring%20%232%20(%2Bfrontend))
+- [**SECOND ASSIGNMENT GIT LINK**](https://classroom.github.com/assignment-invitations/e9b73f5ad86f762c9749f10eb97ec632)
 
 
+### Frontend Framework resources:
+- VUE:
+  - [Setup NPM (stop after doing that)](https://www.youtube.com/watch?v=pD94EojHEsc)
+  - [Setup VUE CLI (Indian powa!)](https://www.youtube.com/watch?v=eMis3LaRYY8)
+  - [Setup VUE CLI 2 - using GUI](https://cli.vuejs.org/guide/creating-a-project.html#using-the-gui)
+  - [VUE Crash Course](https://www.youtube.com/watch?v=qZXt1Aom3Cs)
+
+- Angular:
+  - https://angular.io/tutorial (free)
+  - https://www.udemy.com/course/the-complete-guide-to-angular-2/ (paid)
+
+- React:
+  - https://reactjs.org/tutorial/tutorial.html
+  - https://reactjs.org/docs/components-and-props.html
+  - https://reactjs.org/docs/hooks-intro.html
+  - https://github.com/enaqx/awesome-react
+  - https://fullstackopen.com/en/
 
 [**](https://www.youtube.com/watch?v=6GMkuPiIZ2k)
