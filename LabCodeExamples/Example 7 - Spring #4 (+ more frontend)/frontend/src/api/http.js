@@ -14,20 +14,12 @@ export function encodeParams(p) {
   return queryParamsObject;
 }
 
-HTTP.interceptors.response.use(
-  function (response) {
-    if (response && response.config && response.config.data) {
-      if (typeof response.config.data === "string") {
-        try {
-          response.config.data = JSON.parse(response.config.data);
-        } catch (e) {
-          /* intentionally left blank */
-        }
-      }
-    }
-    return response;
-  },
-  function (error) {
-    return Promise.reject(error);
+export default function authHeader() {
+  let user = JSON.parse(localStorage.getItem("user"));
+  console.log(user);
+  if (user && user.token) {
+    return { Authorization: "Bearer " + user.token };
+  } else {
+    return {};
   }
-);
+}
