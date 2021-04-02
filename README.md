@@ -44,6 +44,8 @@
 - [Dynamic Dependency Injection with Spring Boot](https://github.com/UTCN-SoftwareDesignLab/SoftwareDesignUTCN/tree/master/LabCodeExamples/Example%205%20-%20Spring%20%232%20(%2Bfrontend))
 - [**SECOND ASSIGNMENT GIT LINK**](https://classroom.github.com/assignment-invitations/e9b73f5ad86f762c9749f10eb97ec632)
 
+### Lab 7:
+- [More frontend - lists, create, edit](https://github.com/UTCN-SoftwareDesignLab/SoftwareDesignUTCN/tree/master/LabCodeExamples/Example%207%20-%20Spring%20%234%20(%2B%20more%20frontend))
 
 ### Frontend Framework resources:
 - VUE:
