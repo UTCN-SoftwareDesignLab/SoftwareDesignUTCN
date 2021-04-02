@@ -10,6 +10,7 @@ export const auth = {
   state: initialState,
   actions: {
     async login({ commit }, user) {
+      console.log("phutem");
       return api.auth.login(user).then(
         (user) => {
           commit("loginSuccess", user);
@@ -56,6 +57,13 @@ export const auth = {
     },
     registerFailure(state) {
       state.status.loggedIn = false;
+    },
+  },
+  getters: {
+    isAdmin: (state) => {
+      console.log(state.user.roles);
+      console.log(state.user.roles.includes("ADMIN"));
+      return state.user.roles.includes("ADMIN");
     },
   },
 };

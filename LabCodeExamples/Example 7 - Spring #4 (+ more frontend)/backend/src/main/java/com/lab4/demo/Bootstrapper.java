@@ -1,7 +1,10 @@
 package com.lab4.demo;
 
+import com.lab4.demo.security.AuthService;
+import com.lab4.demo.security.dto.SignupRequest;
 import com.lab4.demo.user.RoleRepository;
 import com.lab4.demo.user.UserRepository;
+import com.lab4.demo.user.UserService;
 import com.lab4.demo.user.model.ERole;
 import com.lab4.demo.user.model.Role;
 import lombok.RequiredArgsConstructor;
@@ -10,6 +13,11 @@ import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Component;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.Set;
+
 @Component
 @RequiredArgsConstructor
 public class Bootstrapper implements ApplicationListener<ApplicationReadyEvent> {
@@ -17,6 +25,8 @@ public class Bootstrapper implements ApplicationListener<ApplicationReadyEvent> 
     private final RoleRepository roleRepository;
 
     private final UserRepository userRepository;
+
+    private final AuthService authService;
 
     @Value("${app.bootstrap}")
     private Boolean bootstrap;
@@ -33,6 +43,18 @@ public class Bootstrapper implements ApplicationListener<ApplicationReadyEvent> 
                                 .build()
                 );
             }
+            authService.register(SignupRequest.builder()
+                    .email("alex@email.com")
+                    .username("alex")
+                    .password("WooHoo1!")
+                    .roles(Set.of("ADMIN"))
+                    .build());
+            authService.register(SignupRequest.builder()
+                    .email("alex1@email.com")
+                    .username("alex1")
+                    .password("WooHoo1!")
+                    .roles(Set.of("CUSTOMER"))
+                    .build());
         }
     }
 }

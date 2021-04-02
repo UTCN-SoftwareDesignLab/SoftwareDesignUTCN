@@ -1,14 +1,42 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Home from "../views/Home.vue";
+import UserList from "../views/UserList.vue";
+import ItemList from "../views/ItemList.vue";
+import { auth as store } from "../store/auth.module";
+import Login from "../views/Login";
 
 Vue.use(VueRouter);
 
 const routes = [
   {
     path: "/",
-    name: "Home",
-    component: Home,
+    name: "Login",
+    component: Login,
+  },
+  {
+    path: "/users",
+    name: "Users",
+    component: UserList,
+    beforeEnter: (to, from, next) => {
+      if (store.getters.isAdmin) {
+        next();
+      } else {
+        next({ name: "Items" });
+      }
+    },
+  },
+  {
+    path: "/items",
+    name: "Items",
+    component: ItemList,
+    beforeEnter: (to, from, next) => {
+      console.log(store);
+      if (store.state.status.loggedIn) {
+        next();
+      } else {
+        next({ name: "Home" });
+      }
+    },
   },
   {
     path: "/about",

@@ -67,6 +67,8 @@
 </template>
 
 <script>
+import router from "../router";
+
 export default {
   name: "HelloWorld",
 
@@ -74,14 +76,23 @@ export default {
     mode: "login",
     login: {
       email: "",
-      username: "username1",
-      password: "password",
+      username: "alex",
+      password: "WooHoo1!",
     },
   }),
   methods: {
-    async attemptLogin() {
-      await this.$store.dispatch("auth/login", this.login);
-      console.log(this.$store.state.auth.user);
+    attemptLogin() {
+      this.$store.dispatch("auth/login", this.login).then(() => {
+        if (this.$store.state.auth.status.loggedIn) {
+          if (this.$store.getters["auth/isAdmin"]) {
+            router.push("/users");
+          } else {
+            router.push("/items");
+          }
+        } else {
+          alert("Invalid credentials!");
+        }
+      });
     },
     async attemptRegister() {
       let res = await this.$store.dispatch("auth/register", this.login);
