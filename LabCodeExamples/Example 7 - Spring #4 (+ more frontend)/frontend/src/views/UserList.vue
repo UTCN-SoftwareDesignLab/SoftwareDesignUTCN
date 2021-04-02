@@ -7,14 +7,10 @@ import api from "../api";
 
 export default {
   name: "UserList",
-  methods: {
-
-  },
+  methods: {},
   async created() {
-    console.log(
-        await api.users.allUsers()
-    )
-  }
+    console.log(await api.users.allUsers());
+  },
 };
 </script>
 

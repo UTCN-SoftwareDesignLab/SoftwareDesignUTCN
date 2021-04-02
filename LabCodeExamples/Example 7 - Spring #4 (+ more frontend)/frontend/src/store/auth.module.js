@@ -10,7 +10,6 @@ export const auth = {
   state: initialState,
   actions: {
     async login({ commit }, user) {
-      console.log("phutem");
       return api.auth.login(user).then(
         (user) => {
           commit("loginSuccess", user);
