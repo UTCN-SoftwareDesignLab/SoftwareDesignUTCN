@@ -9,4 +9,6 @@ public interface ItemMapper {
 
     ItemDTO toDto(Item item);
 
+    Item fromDto(ItemDTO item);
+
 }

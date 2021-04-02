@@ -2,6 +2,7 @@ package com.lab4.demo.frontoffice.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
 import javax.persistence.*;
@@ -10,6 +11,7 @@ import javax.persistence.*;
 @Builder
 @AllArgsConstructor
 @RequiredArgsConstructor
+@Data
 public class Item {
 
     @Id

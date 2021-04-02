@@ -1,6 +1,5 @@
 package com.lab4.demo.frontoffice;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.lab4.demo.BaseControllerTest;
 import com.lab4.demo.TestCreationFactory;
 import com.lab4.demo.frontoffice.model.Item;
@@ -17,6 +16,8 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import java.util.List;
 
+import static com.lab4.demo.TestCreationFactory.randomLong;
+import static com.lab4.demo.TestCreationFactory.randomString;
 import static com.lab4.demo.UrlMapping.EXPORT_REPORT;
 import static com.lab4.demo.UrlMapping.FRONT_OFFICE;
 import static com.lab4.demo.report.ReportType.CSV;
@@ -79,5 +80,33 @@ class FrontOfficeControllerTest extends BaseControllerTest {
         csvExport.andExpect(status().isOk())
                 .andExpect(content().string(csvResponse));
 
+    }
+
+    @Test
+    void create() throws Exception {
+        ItemDTO reqItem = ItemDTO.builder().name(randomString())
+                .description(randomString())
+                .build();
+
+        when(itemService.create(reqItem)).thenReturn(reqItem);
+
+        ResultActions result = performPostWithRequestBody(FRONT_OFFICE, reqItem);
+        result.andExpect(status().isOk())
+                .andExpect(jsonContentToBe(reqItem));
+    }
+
+    @Test
+    void edit() throws Exception {
+        ItemDTO reqItem = ItemDTO.builder()
+                .id(randomLong())
+                .name(randomString())
+                .description(randomString())
+                .build();
+
+        when(itemService.edit(reqItem)).thenReturn(reqItem);
+
+        ResultActions result = performPutWithRequestBody(FRONT_OFFICE, reqItem);
+        result.andExpect(status().isOk())
+                .andExpect(jsonContentToBe(reqItem));
     }
 }

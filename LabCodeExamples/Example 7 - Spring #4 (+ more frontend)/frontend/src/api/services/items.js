@@ -8,4 +8,10 @@ export default {
       }
     );
   },
+  create(item) {
+    return HTTP.post(BASE_URL + "/fo", item, { headers: authHeader() });
+  },
+  edit(item) {
+    return HTTP.put(BASE_URL + "/fo", item, { headers: authHeader() });
+  },
 };

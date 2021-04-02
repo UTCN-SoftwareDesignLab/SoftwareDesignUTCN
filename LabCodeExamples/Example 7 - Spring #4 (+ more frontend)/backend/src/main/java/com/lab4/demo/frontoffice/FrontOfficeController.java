@@ -4,10 +4,7 @@ import com.lab4.demo.frontoffice.model.dto.ItemDTO;
 import com.lab4.demo.report.ReportServiceFactory;
 import com.lab4.demo.report.ReportType;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -25,6 +22,16 @@ public class FrontOfficeController {
     @GetMapping
     public List<ItemDTO> allItems() {
         return itemService.findAll();
+    }
+
+    @PostMapping
+    public ItemDTO create(@RequestBody ItemDTO item) {
+        return itemService.create(item);
+    }
+
+    @PutMapping
+    public ItemDTO edit(@RequestBody ItemDTO item) {
+        return itemService.edit(item);
     }
 
     @GetMapping(EXPORT_REPORT)

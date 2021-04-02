@@ -10,20 +10,25 @@
         single-line
         hide-details
       ></v-text-field>
+      <v-btn @click="addItem">Add Item</v-btn>
     </v-card-title>
     <v-data-table
       :headers="headers"
       :items="items"
       :search="search"
+      @click:row="editItem"
     ></v-data-table>
+    <ItemDialog :opened="dialogVisible" :item="selectedItem"></ItemDialog>
   </v-card>
 </template>
 
 <script>
 import api from "../api";
+import ItemDialog from "../components/ItemDialog";
 
 export default {
   name: "ItemList",
+  components: { ItemDialog },
   data() {
     return {
       items: [],
@@ -37,9 +42,19 @@ export default {
         },
         { text: "Description", value: "description" },
       ],
+      dialogVisible: false,
+      selectedItem: {},
     };
   },
-  methods: {},
+  methods: {
+    editItem(item) {
+      this.selectedItem = item;
+      this.dialogVisible = true;
+    },
+    addItem() {
+      this.dialogVisible = true;
+    },
+  },
   async created() {
     this.items = await api.items.allItems();
     console.log(this.items);
