@@ -30,7 +30,6 @@ const routes = [
     name: "Items",
     component: ItemList,
     beforeEnter: (to, from, next) => {
-      console.log(store);
       if (store.state.status.loggedIn) {
         next();
       } else {

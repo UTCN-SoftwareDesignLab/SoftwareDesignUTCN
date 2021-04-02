@@ -1,8 +1,8 @@
 <template>
   <v-dialog
-      transition="dialog-bottom-transition"
-      max-width="600"
-      :value="opened"
+    transition="dialog-bottom-transition"
+    max-width="600"
+    :value="opened"
   >
     <template>
       <v-card>
@@ -10,8 +10,8 @@
           {{ isNew ? "Create item" : "Edit item" }}
         </v-toolbar>
         <v-form>
-          <v-text-field :value="item.name" label="Name"/>
-          <v-text-field :value="item.description" label="Description"/>
+          <v-text-field v-model="item.name" label="Name" />
+          <v-text-field v-model="item.description" label="Description" />
         </v-form>
         <v-card-actions>
           <v-btn @click="persist">
@@ -35,11 +35,22 @@ export default {
   methods: {
     persist() {
       if (this.isNew) {
-        api.items.create(this.item);
+        api.items
+          .create({
+            name: this.item.name,
+            description: this.item.description,
+          })
+          .then(() => this.$emit("refresh"));
       } else {
-        api.items.edit(this.item);
+        api.items
+          .edit({
+            id: this.item.id,
+            name: this.item.name,
+            description: this.item.description,
+          })
+          .then(() => this.$emit("refresh"));
       }
-    }
+    },
   },
   computed: {
     isNew: function () {

@@ -95,8 +95,7 @@ export default {
       });
     },
     async attemptRegister() {
-      let res = await this.$store.dispatch("auth/register", this.login);
-      console.log(res);
+      await this.$store.dispatch("auth/register", this.login);
     },
     toggleMode() {
       this.mode = this.mode === "login" ? "register" : "login";

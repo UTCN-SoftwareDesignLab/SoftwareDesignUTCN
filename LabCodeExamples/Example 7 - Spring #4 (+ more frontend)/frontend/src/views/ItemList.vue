@@ -18,7 +18,11 @@
       :search="search"
       @click:row="editItem"
     ></v-data-table>
-    <ItemDialog :opened="dialogVisible" :item="selectedItem"></ItemDialog>
+    <ItemDialog
+      :opened="dialogVisible"
+      :item="selectedItem"
+      @refresh="refreshList"
+    ></ItemDialog>
   </v-card>
 </template>
 
@@ -54,10 +58,14 @@ export default {
     addItem() {
       this.dialogVisible = true;
     },
+    async refreshList() {
+      this.dialogVisible = false;
+      this.selectedItem = {};
+      this.items = await api.items.allItems();
+    },
   },
-  async created() {
-    this.items = await api.items.allItems();
-    console.log(this.items);
+  created() {
+    this.refreshList();
   },
 };
 </script>

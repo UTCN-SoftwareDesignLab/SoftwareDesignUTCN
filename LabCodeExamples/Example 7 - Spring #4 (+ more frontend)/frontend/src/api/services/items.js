@@ -9,9 +9,17 @@ export default {
     );
   },
   create(item) {
-    return HTTP.post(BASE_URL + "/fo", item, { headers: authHeader() });
+    return HTTP.post(BASE_URL + "/fo", item, { headers: authHeader() }).then(
+      (response) => {
+        return response.data;
+      }
+    );
   },
   edit(item) {
-    return HTTP.put(BASE_URL + "/fo", item, { headers: authHeader() });
+    return HTTP.patch(BASE_URL + "/fo", item, { headers: authHeader() }).then(
+      (response) => {
+        return response.data;
+      }
+    );
   },
 };

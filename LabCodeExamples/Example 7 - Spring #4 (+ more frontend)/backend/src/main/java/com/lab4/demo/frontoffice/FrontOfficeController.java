@@ -29,7 +29,7 @@ public class FrontOfficeController {
         return itemService.create(item);
     }
 
-    @PutMapping
+    @PatchMapping
     public ItemDTO edit(@RequestBody ItemDTO item) {
         return itemService.edit(item);
     }

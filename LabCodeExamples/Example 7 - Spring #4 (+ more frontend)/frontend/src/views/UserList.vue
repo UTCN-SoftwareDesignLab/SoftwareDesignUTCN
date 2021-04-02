@@ -43,7 +43,6 @@ export default {
   methods: {},
   async created() {
     this.users = await api.users.allUsers();
-    console.log(this.users);
   },
 };
 </script>

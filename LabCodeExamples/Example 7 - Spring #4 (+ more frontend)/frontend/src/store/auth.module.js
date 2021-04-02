@@ -60,8 +60,6 @@ export const auth = {
   },
   getters: {
     isAdmin: (state) => {
-      console.log(state.user.roles);
-      console.log(state.user.roles.includes("ADMIN"));
       return state.user.roles.includes("ADMIN");
     },
   },
