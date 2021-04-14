@@ -47,6 +47,14 @@
 ### Lab 7:
 - [More frontend - lists, create, edit](https://github.com/UTCN-SoftwareDesignLab/SoftwareDesignUTCN/tree/master/LabCodeExamples/Example%207%20-%20Spring%20%234%20(%2B%20more%20frontend))
 
+
+### Lab 8:
+- [API Design (mostly backend)](https://github.com/UTCN-SoftwareDesignLab/SoftwareDesignUTCN/tree/master/LabCodeExamples/Example%208%20-%20Spring%20%235%20(%2B%20on%20API%20design))
+- Great reads: 
+  - https://stoplight.io/blog/crud-api-design/
+  - https://www.vinaysahni.com/best-practices-for-a-pragmatic-restful-api
+
+
 ### Frontend Framework resources:
 - VUE:
   - [Setup NPM (stop after doing that)](https://www.youtube.com/watch?v=pD94EojHEsc)
