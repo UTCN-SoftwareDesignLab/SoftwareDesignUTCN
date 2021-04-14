@@ -1,7 +1,7 @@
-package com.lab4.demo.frontoffice;
+package com.lab4.demo.item;
 
-import com.lab4.demo.frontoffice.model.Item;
-import com.lab4.demo.frontoffice.model.dto.ItemDTO;
+import com.lab4.demo.item.model.Item;
+import com.lab4.demo.item.model.dto.ItemDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

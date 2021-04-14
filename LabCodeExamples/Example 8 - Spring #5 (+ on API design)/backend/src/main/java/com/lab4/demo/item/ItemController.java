@@ -1,6 +1,6 @@
-package com.lab4.demo.frontoffice;
+package com.lab4.demo.item;
 
-import com.lab4.demo.frontoffice.model.dto.ItemDTO;
+import com.lab4.demo.item.model.dto.ItemDTO;
 import com.lab4.demo.report.ReportServiceFactory;
 import com.lab4.demo.report.ReportType;
 import lombok.RequiredArgsConstructor;

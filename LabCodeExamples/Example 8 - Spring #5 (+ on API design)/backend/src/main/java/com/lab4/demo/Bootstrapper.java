@@ -1,6 +1,6 @@
 package com.lab4.demo;
 
-import com.lab4.demo.frontoffice.ItemRepository;
+import com.lab4.demo.item.ItemRepository;
 import com.lab4.demo.security.AuthService;
 import com.lab4.demo.security.dto.SignupRequest;
 import com.lab4.demo.user.RoleRepository;

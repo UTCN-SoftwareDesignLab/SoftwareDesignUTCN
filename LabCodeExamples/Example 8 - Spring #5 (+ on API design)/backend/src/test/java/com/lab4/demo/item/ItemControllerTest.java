@@ -1,9 +1,9 @@
-package com.lab4.demo.frontoffice;
+package com.lab4.demo.item;
 
 import com.lab4.demo.BaseControllerTest;
 import com.lab4.demo.TestCreationFactory;
-import com.lab4.demo.frontoffice.model.Item;
-import com.lab4.demo.frontoffice.model.dto.ItemDTO;
+import com.lab4.demo.item.model.Item;
+import com.lab4.demo.item.model.dto.ItemDTO;
 import com.lab4.demo.report.CSVReportService;
 import com.lab4.demo.report.PdfReportService;
 import com.lab4.demo.report.ReportServiceFactory;

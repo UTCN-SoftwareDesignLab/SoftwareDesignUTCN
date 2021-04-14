@@ -1,4 +1,4 @@
-package com.lab4.demo.frontoffice.model.dto;
+package com.lab4.demo.item.model.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
