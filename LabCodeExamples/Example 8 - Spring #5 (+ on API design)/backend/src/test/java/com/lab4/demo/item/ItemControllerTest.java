@@ -134,6 +134,21 @@ class ItemControllerTest extends BaseControllerTest {
     }
 
     @Test
+    void getItem() throws Exception {
+        long id = randomLong();
+        ItemDTO reqItem = ItemDTO.builder()
+                .id(id)
+                .name(randomString())
+                .description(randomString())
+                .build();
+        when(itemService.get(id)).thenReturn(reqItem);
+
+        ResultActions result = performGetWithPathVariable(ITEMS + ENTITY, id);
+        result.andExpect(status().isOk())
+                .andExpect(jsonContentToBe(reqItem));
+    }
+
+    @Test
     void delete() throws Exception {
         long id = randomLong();
         doNothing().when(itemService).delete(id);

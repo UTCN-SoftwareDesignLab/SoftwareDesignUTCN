@@ -52,6 +52,11 @@ public class ItemController {
         return reviewService.getReviewsForItem(id);
     }
 
+    @GetMapping(ENTITY)
+    public ItemDTO getItem(@PathVariable Long id) {
+        return itemService.get(id);
+    }
+
     @GetMapping(EXPORT_REPORT)
     public String exportReport(@PathVariable ReportType type) {
         return reportServiceFactory.getReportService(type).export();
