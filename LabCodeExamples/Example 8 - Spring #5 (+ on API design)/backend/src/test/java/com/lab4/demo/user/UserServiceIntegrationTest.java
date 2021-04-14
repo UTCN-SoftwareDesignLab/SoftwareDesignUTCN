@@ -2,6 +2,7 @@ package com.lab4.demo.user;
 
 import com.lab4.demo.user.dto.UserMinimalDTO;
 import com.lab4.demo.user.model.User;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

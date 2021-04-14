@@ -6,6 +6,8 @@ import com.lab4.demo.review.model.Review;
 import com.lab4.demo.review.model.dto.ReviewDTO;
 import com.lab4.demo.user.UserRepository;
 import com.lab4.demo.user.model.User;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -30,6 +32,14 @@ class ReviewServiceTest {
 
     @Autowired
     private UserRepository userRepository;
+
+    @BeforeEach
+    @AfterEach
+    void cleanup() {
+        reviewRepository.deleteAll();
+        itemRepository.deleteAll();
+        userRepository.deleteAll();
+    }
 
     @Test
     void getReviewsForItem() {
