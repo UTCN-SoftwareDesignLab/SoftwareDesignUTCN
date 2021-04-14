@@ -3,10 +3,13 @@ package com.lab4.demo.item;
 import com.lab4.demo.item.model.dto.ItemDTO;
 import com.lab4.demo.report.ReportServiceFactory;
 import com.lab4.demo.report.ReportType;
+import com.lab4.demo.review.ReviewService;
+import com.lab4.demo.review.model.dto.ReviewDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Set;
 
 import static com.lab4.demo.UrlMapping.*;
 
@@ -17,6 +20,7 @@ public class ItemController {
 
     private final ItemService itemService;
     private final ReportServiceFactory reportServiceFactory;
+    private final ReviewService reviewService;
 
     @GetMapping
     public List<ItemDTO> allItems() {
@@ -41,6 +45,11 @@ public class ItemController {
     @DeleteMapping(ENTITY)
     public void delete(@PathVariable Long id) {
         itemService.delete(id);
+    }
+
+    @GetMapping(ENTITY + REVIEWS)
+    public Set<ReviewDTO> reviewsForItem(@PathVariable Long id) {
+        return reviewService.getReviewsForItem(id);
     }
 
     @GetMapping(EXPORT_REPORT)

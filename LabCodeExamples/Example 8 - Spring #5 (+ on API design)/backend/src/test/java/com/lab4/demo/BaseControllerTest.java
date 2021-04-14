@@ -49,6 +49,11 @@ public abstract class BaseControllerTest {
         return mockMvc.perform(jsonType(delete(path, pathVariable)));
     }
 
+    protected ResultActions performGetWithPathVariable(String path, Object pathVariable) throws Exception {
+        return mockMvc.perform(jsonType(get(path, pathVariable)));
+    }
+
+
     protected String asJsonString(final Object obj) {
         if (obj instanceof String) return String.valueOf(obj);
         try {

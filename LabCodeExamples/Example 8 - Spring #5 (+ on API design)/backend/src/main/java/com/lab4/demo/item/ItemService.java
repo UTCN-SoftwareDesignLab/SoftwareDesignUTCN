@@ -2,11 +2,13 @@ package com.lab4.demo.item;
 
 import com.lab4.demo.item.model.Item;
 import com.lab4.demo.item.model.dto.ItemDTO;
+import com.lab4.demo.review.model.dto.ReviewDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
@@ -53,4 +55,5 @@ public class ItemService {
     public void delete(Long id) {
         itemRepository.deleteById(id);
     }
+
 }

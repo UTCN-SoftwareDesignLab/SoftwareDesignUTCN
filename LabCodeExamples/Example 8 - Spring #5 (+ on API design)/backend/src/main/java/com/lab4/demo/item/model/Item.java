@@ -1,17 +1,18 @@
 package com.lab4.demo.item.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.RequiredArgsConstructor;
+import com.lab4.demo.review.model.Review;
+import lombok.*;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Builder
 @AllArgsConstructor
 @RequiredArgsConstructor
-@Data
+@Getter
+@Setter
 public class Item {
 
     @Id
@@ -24,4 +25,7 @@ public class Item {
     @Column(length = 1024)
     private String description;
 
+    @OneToMany(mappedBy = "item")
+    @Builder.Default
+    private Set<Review> reviews = new HashSet<>();
 }

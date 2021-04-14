@@ -7,6 +7,8 @@ import com.lab4.demo.item.model.dto.ItemDTO;
 import com.lab4.demo.report.CSVReportService;
 import com.lab4.demo.report.PdfReportService;
 import com.lab4.demo.report.ReportServiceFactory;
+import com.lab4.demo.review.ReviewService;
+import com.lab4.demo.review.model.dto.ReviewDTO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -14,10 +16,11 @@ import org.mockito.Mock;
 import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
-import static com.lab4.demo.TestCreationFactory.randomLong;
-import static com.lab4.demo.TestCreationFactory.randomString;
+import static com.lab4.demo.TestCreationFactory.*;
 import static com.lab4.demo.UrlMapping.*;
 import static com.lab4.demo.report.ReportType.CSV;
 import static com.lab4.demo.report.ReportType.PDF;
@@ -43,10 +46,13 @@ class ItemControllerTest extends BaseControllerTest {
     @Mock
     private PdfReportService pdfReportService;
 
+    @Mock
+    private ReviewService reviewService;
+
     @BeforeEach
     protected void setUp() {
         super.setUp();
-        controller = new ItemController(itemService, reportServiceFactory);
+        controller = new ItemController(itemService, reportServiceFactory, reviewService);
         mockMvc = MockMvcBuilders.standaloneSetup(controller).build();
     }
 
@@ -137,5 +143,17 @@ class ItemControllerTest extends BaseControllerTest {
 
         result.andExpect(status().isOk());
 
+    }
+
+    @Test
+    void reviewsForItem() throws Exception {
+        long id = randomLong();
+        Set<ReviewDTO> reviewDTOs = new HashSet<>(listOf(ReviewDTO.class));
+
+        when(reviewService.getReviewsForItem(id)).thenReturn(reviewDTOs);
+
+        ResultActions result = performGetWithPathVariable(ITEMS + ENTITY + REVIEWS, id);
+        result.andExpect(status().isOk())
+                .andExpect(jsonContentToBe(reviewDTOs));
     }
 }

@@ -1,5 +1,6 @@
 package com.lab4.demo.user.model;
 
+import com.lab4.demo.review.model.Review;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -7,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -42,4 +44,8 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     @Builder.Default
     private Set<Role> roles = new HashSet<>();
+
+    @OneToMany(mappedBy = "user")
+    private Collection<Review> reviews;
+
 }
