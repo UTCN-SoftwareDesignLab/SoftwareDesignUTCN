@@ -54,6 +54,9 @@
   - https://stoplight.io/blog/crud-api-design/
   - https://www.vinaysahni.com/best-practices-for-a-pragmatic-restful-api
 
+### Lab 9:
+- [Sorting, pagination and more complex queries through JPA Specifications](https://github.com/UTCN-SoftwareDesignLab/SoftwareDesignUTCN/tree/master/LabCodeExamples/Example%208%20-%20Spring%20%236%20(%2B%20on%20JPA%20Specifications))
+
 
 ### Frontend Framework resources:
 - VUE:
