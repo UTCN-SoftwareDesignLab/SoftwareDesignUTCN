@@ -2,6 +2,14 @@ package com.lab4.demo.item;
 
 import com.lab4.demo.TestCreationFactory;
 import com.lab4.demo.item.model.Item;
+import com.lab4.demo.review.Rating;
+import com.lab4.demo.review.ReviewRepository;
+import com.lab4.demo.review.model.Review;
+import com.lab4.demo.user.RoleRepository;
+import com.lab4.demo.user.UserRepository;
+import com.lab4.demo.user.model.ERole;
+import com.lab4.demo.user.model.Role;
+import com.lab4.demo.user.model.User;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,22 +22,41 @@ import org.springframework.data.domain.Sort;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
+import java.util.Set;
 
+import static com.lab4.demo.TestCreationFactory.randomString;
 import static com.lab4.demo.item.ItemSpecifications.createdAfter;
+import static com.lab4.demo.item.ItemSpecifications.onlyExcellentRated;
 import static com.lab4.demo.item.ItemSpecifications.similarNames;
+import static com.lab4.demo.item.ItemSpecifications.withAdministratorReviews;
+import static com.lab4.demo.review.Rating.AVERAGE;
+import static com.lab4.demo.review.Rating.EXCELENT;
+import static com.lab4.demo.user.model.ERole.ADMIN;
+import static com.lab4.demo.user.model.ERole.CUSTOMER;
+import static com.lab4.demo.user.model.ERole.MANAGER;
+import static com.lab4.demo.user.model.ERole.values;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.springframework.data.domain.Sort.Direction.ASC;
-import static org.springframework.data.jpa.domain.Specification.where;
 
 @SpringBootTest
 public class ItemRepositoryTest {
 
   @Autowired
   private ItemRepository repository;
+
+  @Autowired
+  private ReviewRepository reviewRepository;
+
+  @Autowired
+  private UserRepository userRepository;
+
+  @Autowired
+  private RoleRepository roleRepository;
 
   @BeforeEach
   public void beforeEach() {
@@ -170,7 +197,7 @@ public class ItemRepositoryTest {
   }
 
   @Test
-  void testSpecificationQuery() {
+  void testSimpleSpecificationQuery() {
     for (int a1 = 'a'; a1 <= 'z'; a1++) {
       for (int a2 = 'a'; a2 <= 'z'; a2++) {
         for (int a3 = 'a'; a3 <= 'z'; a3++) {
@@ -210,6 +237,131 @@ public class ItemRepositoryTest {
         );
     assertEquals(1, latestLaptops.size());
     assertEquals(newDescription, latestLaptops.get(0).getDescription());
+  }
+
+  @Test
+  void testComplicatedSpecificationQuery() {
+
+    final String qualityLaptop = "Quality laptop 1";
+    final Item excellent1 = repository.save(Item.builder()
+        .name(qualityLaptop)
+        .dateCreated(LocalDateTime.now().minusMonths(3))
+        .build());
+
+    reviewRepository.save(Review.builder()
+        .item(excellent1)
+        .text("Blanao")
+        .rating(EXCELENT)
+        .build());
+
+    reviewRepository.save(Review.builder()
+        .item(excellent1)
+        .text("SuP3r mega")
+        .rating(EXCELENT)
+        .build());
+
+
+    final String qualityMac = "Quality mac 1";
+    final Item excellent2 = repository.save(Item.builder()
+        .name(qualityMac)
+        .dateCreated(LocalDateTime.now().minusMonths(2))
+        .build());
+
+    reviewRepository.save(Review.builder()
+        .item(excellent2)
+        .text("Incredibil")
+        .rating(EXCELENT)
+        .build());
+
+    final Item average1 = repository.save(Item.builder()
+        .name("Average laptop 2")
+        .dateCreated(LocalDateTime.now().minusMonths(3))
+        .build());
+
+    reviewRepository.save(Review.builder()
+        .item(average1)
+        .text("Incredibil")
+        .rating(AVERAGE)
+        .build());
+
+    final List<Item> excellentItems = repository.findAll(onlyExcellentRated());
+    assertEquals(2, excellentItems.size());
+    assertEquals(qualityLaptop, excellentItems.get(0).getName());
+    assertEquals(qualityMac, excellentItems.get(1).getName());
+
+    final List<Item> onlyExcellentMacs = repository.findAll(onlyExcellentRated().and(similarNames("%mac%")));
+    assertEquals(1, onlyExcellentMacs.size());
+    assertEquals(qualityMac, onlyExcellentMacs.get(0).getName());
+  }
+
+  @Test
+  void testWildlyComplicatedQuery() {
+    buildRoles();
+    final User admin = userRepository.save(User.builder()
+        .username("admin")
+        .email("admin@users.com")
+        .password("stronk")
+        .roles(Set.of(roleRepository.findByName(ADMIN).get()))
+        .build());
+
+    final User customer = userRepository.save(User.builder()
+        .username("customer")
+        .email("customer@users.com")
+        .password("stronk")
+        .roles(Set.of(roleRepository.findByName(CUSTOMER).get()))
+        .build());
+
+    final User manager = userRepository.save(User.builder()
+        .username("manager")
+        .email("manager@users.com")
+        .password("stronk")
+        .roles(Set.of(roleRepository.findByName(MANAGER).get()))
+        .build());
+
+    final String laptopName = "laptop";
+    final Item laptop = repository.save(Item.builder()
+        .name(laptopName)
+        .build());
+
+    final Item mac = repository.save(Item.builder()
+        .name("mac")
+        .build());
+
+    final String webcamName = "webcam";
+    final Item webcam = repository.save(Item.builder()
+        .name(webcamName)
+        .build());
+
+    addRandomReview(laptop, admin);
+    addRandomReview(laptop, manager);
+    addRandomReview(mac, customer);
+    addRandomReview(webcam, admin);
+
+    final List<Item> onlyReviewedByAdmins = repository.findAll(withAdministratorReviews());
+    assertEquals(2, onlyReviewedByAdmins.size());
+    assertEquals(laptopName, onlyReviewedByAdmins.get(0).getName());
+  }
+
+  private void addRandomReview(Item item, User user) {
+    final Rating[] ratings = Rating.values();
+    reviewRepository.save(
+        Review.builder()
+            .text(randomString())
+            .rating(ratings[new Random().nextInt(ratings.length - 1)])
+            .item(item)
+            .user(user)
+            .build()
+    );
+  }
+
+  private void buildRoles() {
+    for (ERole value : values()) {
+      roleRepository.save(
+          Role.builder()
+              .name(value)
+              .build()
+      );
+    }
   }
 
 }
