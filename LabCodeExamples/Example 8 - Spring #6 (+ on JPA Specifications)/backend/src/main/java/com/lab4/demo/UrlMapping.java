@@ -4,6 +4,7 @@ public class UrlMapping {
     public static final String API_PATH = "/api";
     public static final String ITEMS = API_PATH + "/items";
     public static final String ENTITY = "/{id}";
+    public static final String FILTERED_ITEMS = "/filtered";
     public static final String EXPORT_REPORT = "/export/{type}";
 
     public static final String REVIEWS = "/reviews";

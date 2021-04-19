@@ -1,6 +1,7 @@
 package com.lab4.demo.item;
 
 import com.lab4.demo.item.model.Item;
+import com.lab4.demo.item.model.dto.ItemFilterRequestDto;
 import com.lab4.demo.review.model.Review;
 import com.lab4.demo.user.model.ERole;
 import com.lab4.demo.user.model.User;
@@ -56,4 +57,9 @@ public class ItemSpecifications {
     );
   }
 
+  public static Specification<Item> specificationsFromFilter(ItemFilterRequestDto filter) {
+    final Specification<Object> spec = (root, query, cb) -> cb.and();
+
+    return null;
+  }
 }
