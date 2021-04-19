@@ -4,6 +4,7 @@ import com.lab4.demo.item.model.Item;
 import com.lab4.demo.item.model.dto.ItemDTO;
 import com.lab4.demo.item.model.dto.ItemFilterRequestDto;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
@@ -60,12 +61,9 @@ public class ItemService {
         itemRepository.deleteById(id);
     }
 
-    public List<ItemDTO> findAllFiltered(ItemFilterRequestDto filter, Pageable pageable) {
+    public Page<ItemDTO> findAllFiltered(ItemFilterRequestDto filter, Pageable pageable) {
         return itemRepository.findAll(
                 ItemSpecifications.specificationsFromFilter(filter), pageable
-        ).stream()
-                .map(itemMapper::toDto)
-                .collect(Collectors.toList());
-
+        ).map(itemMapper::toDto);
     }
 }

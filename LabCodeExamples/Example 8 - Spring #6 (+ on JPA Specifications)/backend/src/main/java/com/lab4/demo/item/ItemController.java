@@ -7,6 +7,7 @@ import com.lab4.demo.report.ReportType;
 import com.lab4.demo.review.ReviewService;
 import com.lab4.demo.review.model.dto.ReviewDTO;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.*;
@@ -30,8 +31,8 @@ public class ItemController {
         return itemService.findAll();
     }
 
-    @GetMapping(FILTERED_ITEMS)
-    public List<ItemDTO> filteredItems(@ModelAttribute("filter") ItemFilterRequestDto filter, @PageableDefault(sort
+    @GetMapping(FILTERED)
+    public Page<ItemDTO> filteredItems(@ModelAttribute("filter") ItemFilterRequestDto filter, @PageableDefault(sort
             = {"name"}) Pageable pageable) {
         return itemService.findAllFiltered(filter, pageable);
     }

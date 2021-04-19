@@ -14,6 +14,12 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.util.Pair;
+import org.springframework.data.web.PageableHandlerMethodArgumentResolver;
 import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
@@ -26,6 +32,7 @@ import static com.lab4.demo.UrlMapping.*;
 import static com.lab4.demo.report.ReportType.CSV;
 import static com.lab4.demo.report.ReportType.PDF;
 import static org.mockito.Mockito.*;
+import static org.springframework.data.domain.Sort.Direction.ASC;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -54,7 +61,9 @@ class ItemControllerTest extends BaseControllerTest {
     protected void setUp() {
         super.setUp();
         controller = new ItemController(itemService, reportServiceFactory, reviewService);
-        mockMvc = MockMvcBuilders.standaloneSetup(controller).build();
+        mockMvc = MockMvcBuilders.standaloneSetup(controller)
+                .setCustomArgumentResolvers(new PageableHandlerMethodArgumentResolver())
+                .build();
     }
 
     @Test
@@ -174,13 +183,25 @@ class ItemControllerTest extends BaseControllerTest {
     }
 
     @Test
-    void filteredItems() {
+    void filteredItems() throws Exception {
         String nameFilter = "name filter";
         ItemFilterRequestDto filters = ItemFilterRequestDto.builder()
                 .onlyExcellent(true)
                 .name(nameFilter)
                 .build();
 
+        final int sortedPage = 4;
+        final int sortedPageSize = 100;
+        final String sortColumn = "dateCreated";
+        final PageRequest pagination = PageRequest.of(sortedPage, sortedPageSize, Sort.by(ASC, sortColumn));
 
+        Page<ItemDTO> items = new PageImpl<>(listOf(ItemDTO.class));
+        when(itemService.findAllFiltered(filters, pagination)).thenReturn(items);
+
+        ResultActions result = performGetWithModelAttributeAndParams(ITEMS + FILTERED, Pair.of("filter", filters), pairsFromPagination(pagination));
+
+        verify(itemService, times(1)).findAllFiltered(filters, pagination);
+        result.andExpect(status().isOk())
+                .andExpect(jsonContentToBe(items));
     }
 }

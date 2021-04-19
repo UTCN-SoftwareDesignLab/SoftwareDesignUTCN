@@ -2,11 +2,13 @@ package com.lab4.demo.item.model.dto;
 
 import lombok.Builder;
 import lombok.Data;
+import lombok.RequiredArgsConstructor;
 
 import java.time.LocalDateTime;
 
 @Data
 @Builder
+@RequiredArgsConstructor
 public class ItemFilterRequestDto {
     @Builder.Default
     private final String name = "";
