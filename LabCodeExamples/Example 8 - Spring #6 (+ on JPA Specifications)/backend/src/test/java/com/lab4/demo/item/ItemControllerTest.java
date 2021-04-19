@@ -4,6 +4,7 @@ import com.lab4.demo.BaseControllerTest;
 import com.lab4.demo.TestCreationFactory;
 import com.lab4.demo.item.model.Item;
 import com.lab4.demo.item.model.dto.ItemDTO;
+import com.lab4.demo.item.model.dto.ItemFilterRequestDto;
 import com.lab4.demo.report.CSVReportService;
 import com.lab4.demo.report.PdfReportService;
 import com.lab4.demo.report.ReportServiceFactory;
@@ -170,5 +171,16 @@ class ItemControllerTest extends BaseControllerTest {
         ResultActions result = performGetWithPathVariable(ITEMS + ENTITY + REVIEWS, id);
         result.andExpect(status().isOk())
                 .andExpect(jsonContentToBe(reviewDTOs));
+    }
+
+    @Test
+    void filteredItems() {
+        String nameFilter = "name filter";
+        ItemFilterRequestDto filters = ItemFilterRequestDto.builder()
+                .onlyExcellent(true)
+                .name(nameFilter)
+                .build();
+
+
     }
 }
