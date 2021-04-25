@@ -56,6 +56,8 @@
 
 ### Lab 9:
 - [Sorting, pagination and more complex queries through JPA Specifications](https://github.com/UTCN-SoftwareDesignLab/SoftwareDesignUTCN/tree/master/LabCodeExamples/Example%208%20-%20Spring%20%236%20(%2B%20on%20JPA%20Specifications))
+- [**THIRD ASSIGNMENT GIT LINK**](https://classroom.github.com/assignment-invitations/0a35c8d8963ef53daa044c3049d70a79)
+- [**FINAL PROJECT ASSIGNMENT GIT LINK](https://classroom.github.com/assignment-invitations/df5ea7c660551ed609045b7854b81f0a)
 
 
 ### Frontend Framework resources:
