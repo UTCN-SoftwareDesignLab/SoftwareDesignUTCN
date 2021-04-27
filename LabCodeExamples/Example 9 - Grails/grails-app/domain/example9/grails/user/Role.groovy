@@ -7,6 +7,6 @@ class Role {
     ERole name
 
     static constraints = {
-        name nullable: false, blank: false
+        name nullable: false, blank: false, unique: true
     }
 }
