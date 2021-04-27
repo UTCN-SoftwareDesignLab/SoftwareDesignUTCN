@@ -3,7 +3,7 @@
 
 - [Lab Schedule (_"More like what you'd call guidelines than actual rules**"_)](https://github.com/SoftwareDesign2017/SoftwareDesign2017/blob/master/Resources/Schedule.pdf)
 - [Project related documents](https://github.com/SoftwareDesign2017/SoftwareDesign2017/tree/master/Resources/Projects)
-- [List of example projects](https://github.com/SoftwareDesign2017/SoftwareDesign2017/blob/master/Resources/Projects/Projects%20List%20examples.doc) **(you will not be allowed to pick anything from this list, instead, you'll have to come up with your own ideas)**
+- [List of example projects](https://github.com/UTCN-SoftwareDesignLab/SoftwareDesignUTCN/blob/master/Resources/Projects/Projects%20List%20examples.pdf) **(you will not be allowed to pick anything from this list, instead, you'll have to come up with your own ideas)**
 
 ### Lab 1:
 - [Example 0 - SOLID principles](https://github.com/UTCN-SoftwareDesignLab/SoftwareDesignUTCN/tree/master/LabCodeExamples/SOLID%20Lab)
@@ -56,6 +56,8 @@
 
 ### Lab 9:
 - [Sorting, pagination and more complex queries through JPA Specifications](https://github.com/UTCN-SoftwareDesignLab/SoftwareDesignUTCN/tree/master/LabCodeExamples/Example%208%20-%20Spring%20%236%20(%2B%20on%20JPA%20Specifications))
+- [**THIRD ASSIGNMENT GIT LINK**](https://classroom.github.com/assignment-invitations/0a35c8d8963ef53daa044c3049d70a79)
+- [**FINAL PROJECT ASSIGNMENT GIT LINK**](https://classroom.github.com/assignment-invitations/df5ea7c660551ed609045b7854b81f0a)
 
 
 ### Frontend Framework resources:
