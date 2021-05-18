@@ -24,7 +24,7 @@ public class Item {
     private String name;
 
     @Column(length = 1024)
-    private String description;
+    private String details;
 
     @Column
     private LocalDateTime dateCreated;

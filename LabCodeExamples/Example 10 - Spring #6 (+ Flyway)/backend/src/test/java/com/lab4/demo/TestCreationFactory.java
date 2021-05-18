@@ -56,7 +56,7 @@ public class TestCreationFactory {
         return Item.builder()
                 .id(randomLong())
                 .name(randomString())
-                .description(randomString())
+                .details(randomString())
                 .build();
     }
 

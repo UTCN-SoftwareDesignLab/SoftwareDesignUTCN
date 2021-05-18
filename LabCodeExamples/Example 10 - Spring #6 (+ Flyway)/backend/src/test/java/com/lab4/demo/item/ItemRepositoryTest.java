@@ -10,7 +10,6 @@ import com.lab4.demo.user.UserRepository;
 import com.lab4.demo.user.model.ERole;
 import com.lab4.demo.user.model.Role;
 import com.lab4.demo.user.model.User;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,6 +51,8 @@ public class ItemRepositoryTest {
     @BeforeEach
     public void beforeEach() {
         reviewRepository.deleteAll();
+        userRepository.deleteAll();
+        roleRepository.deleteAll();
         repository.deleteAll();
     }
 
@@ -78,18 +79,18 @@ public class ItemRepositoryTest {
     public void testSimpleLikeQuery() {
         final Item item1 = Item.builder()
                 .name("Stewie")
-                .description("Something, something, something ... dark side.")
+                .details("Something, something, something ... dark side.")
                 .build();
 
         repository.save(item1);
 
-        final List<Item> res1 = repository.findAllByNameLikeOrDescriptionLike("Stewie",
+        final List<Item> res1 = repository.findAllByNameLikeOrDetailsLike("Stewie",
                 "noooope");
         assertFalse(res1.isEmpty());
         assertEquals(1, res1.size());
         assertEquals(item1.getId(), res1.get(0).getId());
 
-        final List<Item> res2 = repository.findAllByNameLikeOrDescriptionLike("%tew%",
+        final List<Item> res2 = repository.findAllByNameLikeOrDetailsLike("%tew%",
                 "noooope");
         assertFalse(res2.isEmpty());
         assertEquals(1, res2.size());
@@ -103,18 +104,21 @@ public class ItemRepositoryTest {
 
     @Test
     void testSortingLikeQuery() {
+        List<Item> items = new ArrayList<>();
         for (int a1 = 'a'; a1 <= 'z'; a1++) {
             for (int a2 = 'a'; a2 <= 'z'; a2++) {
                 for (int a3 = 'a'; a3 <= 'z'; a3++) {
                     String title = String.valueOf((char) a1) +
                             (char) a2 +
                             (char) a3;
-                    repository.save(Item.builder()
+                    Item item = Item.builder()
                             .name(title)
-                            .build());
+                            .build();
+                    items.add(item);
                 }
             }
         }
+        repository.saveAll(items);
 
         final List<Item> bItemsSortedDesc = repository.findAllByNameLikeOrderByNameDesc("%b%");
         final Item firstItem = bItemsSortedDesc.get(0);
@@ -142,18 +146,21 @@ public class ItemRepositoryTest {
 
     @Test
     void testPaginationQuery() {
+        List<Item> items = new ArrayList<>();
         for (int a1 = 'a'; a1 <= 'z'; a1++) {
             for (int a2 = 'a'; a2 <= 'z'; a2++) {
                 for (int a3 = 'a'; a3 <= 'z'; a3++) {
                     String title = String.valueOf((char) a1) +
                             (char) a2 +
                             (char) a3;
-                    repository.save(Item.builder()
+                    Item item = Item.builder()
                             .name(title)
-                            .build());
+                            .build();
+                    items.add(item);
                 }
             }
         }
+        repository.saveAll(items);
 
         final int page = 1;
         final int pageSize = 10;
@@ -190,18 +197,21 @@ public class ItemRepositoryTest {
 
     @Test
     void testSimpleSpecificationQuery() {
+        List<Item> items = new ArrayList<>();
         for (int a1 = 'a'; a1 <= 'z'; a1++) {
             for (int a2 = 'a'; a2 <= 'z'; a2++) {
                 for (int a3 = 'a'; a3 <= 'z'; a3++) {
                     String title = String.valueOf((char) a1) +
                             (char) a2 +
                             (char) a3;
-                    repository.save(Item.builder()
+                    Item item = Item.builder()
                             .name(title)
-                            .build());
+                            .build();
+                    items.add(item);
                 }
             }
         }
+        repository.saveAll(items);
 
         final List<Item> items1 = repository.findAll(similarNames("%b%"));
         assertTrue(items1.size() > 1000);
@@ -210,7 +220,7 @@ public class ItemRepositoryTest {
         repository.save(
                 Item.builder()
                         .name("Laptop")
-                        .description(newDescription)
+                        .details(newDescription)
                         .dateCreated(LocalDateTime.now())
                         .build()
         );
@@ -218,7 +228,7 @@ public class ItemRepositoryTest {
         repository.save(
                 Item.builder()
                         .name("Laptop")
-                        .description("Oldie goldie")
+                        .details("Oldie goldie")
                         .dateCreated(LocalDateTime.now().minusYears(1))
                         .build()
         );
@@ -228,7 +238,7 @@ public class ItemRepositoryTest {
                         createdAfter(LocalDateTime.now().minusMonths(3)).and(similarNames("%Lapt%"))
                 );
         assertEquals(1, latestLaptops.size());
-        assertEquals(newDescription, latestLaptops.get(0).getDescription());
+        assertEquals(newDescription, latestLaptops.get(0).getDetails());
     }
 
     @Test

@@ -45,7 +45,7 @@ class ReviewServiceTest {
     void getReviewsForItem() {
         User user = User.builder().username(randomString()).password(randomString()).email(randomEmail()).build();
         userRepository.save(user);
-        Item item = Item.builder().name(randomString()).description(randomString()).build();
+        Item item = Item.builder().name(randomString()).details(randomString()).build();
         item = itemRepository.save(item);
 
         Review reviewToBeAdded = Review.builder().item(item).user(user).text(randomString()).build();

@@ -39,7 +39,7 @@ public class ItemService {
     public ItemDTO edit(Long id, ItemDTO item) {
         Item actItem = findById(id);
         actItem.setName(item.getName());
-        actItem.setDescription(item.getDescription());
+        actItem.setDetails(item.getDescription());
         return itemMapper.toDto(
                 itemRepository.save(actItem)
         );
