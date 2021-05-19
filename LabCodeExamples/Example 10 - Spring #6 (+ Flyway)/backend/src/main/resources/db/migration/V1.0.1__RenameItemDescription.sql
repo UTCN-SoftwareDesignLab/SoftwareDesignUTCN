@@ -1,1 +1,0 @@
-alter table item change column `description` `details` varchar(1024);
