@@ -59,6 +59,9 @@
 - [**THIRD ASSIGNMENT GIT LINK**](https://classroom.github.com/assignment-invitations/0a35c8d8963ef53daa044c3049d70a79)
 - [**FINAL PROJECT ASSIGNMENT GIT LINK**](https://classroom.github.com/assignment-invitations/df5ea7c660551ed609045b7854b81f0a)
 
+### Lab 10:
+- [Flyway-  Database Migrations](https://github.com/UTCN-SoftwareDesignLab/SoftwareDesignUTCN/tree/master/LabCodeExamples/Example%2010%20-%20Spring%20%237%20(%2B%20Flyway)/backend)
+
 
 ### Frontend Framework resources:
 - VUE:
