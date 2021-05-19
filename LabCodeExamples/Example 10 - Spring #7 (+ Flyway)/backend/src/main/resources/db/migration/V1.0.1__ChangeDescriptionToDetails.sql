@@ -1,0 +1,1 @@
+alter table spring1.item change column `description` `details` varchar(1024);
