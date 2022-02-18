@@ -2,19 +2,20 @@ package services;
 
 import model.Book;
 import model.builder.BookBuilder;
-import org.junit.Assert;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 import repositories.BookRepository;
 import repositories.BookRepositoryMock;
 
 import java.time.LocalDate;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 public class BookServiceImplTest {
 
   private static BookService service;
 
-  @BeforeClass
+  @BeforeAll
   public static void setupClass() {
     BookRepository bookRepositoryMock =
         new BookRepositoryMock();
@@ -46,6 +47,6 @@ public class BookServiceImplTest {
     service.save(book);
 
     int ageOfBook = service.getAgeOfBook(id);
-    Assert.assertEquals(LocalDate.now().getYear() - publishingYear, ageOfBook);
+    assertEquals(LocalDate.now().getYear() - publishingYear, ageOfBook);
   }
 }

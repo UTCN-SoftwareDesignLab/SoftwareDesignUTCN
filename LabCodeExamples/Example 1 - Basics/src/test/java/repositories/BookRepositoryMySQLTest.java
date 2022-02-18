@@ -4,26 +4,28 @@ import database.DatabaseConnectionFactory;
 import database.JDBConnectionWrapper;
 import model.Book;
 import model.builder.BookBuilder;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
 import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class BookRepositoryMySQLTest {
 
 
   private static BookRepository repository;
 
-  @BeforeClass
+  @BeforeAll
   public static void setupClass() {
     JDBConnectionWrapper connectionWrapper = DatabaseConnectionFactory.getConnectionWrapper(true);
     repository = new BookRepositoryCacheDecorator(new BookRepositoryMySQL(connectionWrapper));
   }
 
-  @Before
+  @BeforeEach
   public void setup() {
     repository.removeAll();
   }
@@ -31,7 +33,7 @@ public class BookRepositoryMySQLTest {
   @Test
   public void findAll() {
     List<Book> noBooks = repository.findAll();
-    Assert.assertTrue(noBooks.isEmpty());
+    assertTrue(noBooks.isEmpty());
   }
 
   @Test
@@ -44,13 +46,13 @@ public class BookRepositoryMySQLTest {
         .setPublishedDate(LocalDate.now())
         .build();
 
-    Assert.assertFalse(repository.save(bookNoAuthor));
+    assertFalse(repository.save(bookNoAuthor));
 
     Book bookNoTitle = new BookBuilder().setAuthor("author")
         .setPublishedDate(LocalDate.now())
         .build();
 
-    Assert.assertFalse(repository.save(bookNoTitle));
+    assertFalse(repository.save(bookNoTitle));
 
     Book validBook = new BookBuilder()
         .setAuthor("author")
@@ -58,7 +60,7 @@ public class BookRepositoryMySQLTest {
         .setPublishedDate(LocalDate.now())
         .build();
 
-    Assert.assertTrue(repository.save(validBook));
+    assertTrue(repository.save(validBook));
   }
 
   @Test
@@ -70,6 +72,6 @@ public class BookRepositoryMySQLTest {
         .build());
     repository.removeAll();
     List<Book> noBooks = repository.findAll();
-    Assert.assertTrue(noBooks.isEmpty());
+    assertTrue(noBooks.isEmpty());
   }
 }

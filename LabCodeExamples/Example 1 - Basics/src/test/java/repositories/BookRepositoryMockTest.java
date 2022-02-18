@@ -2,23 +2,23 @@ package repositories;
 
 import model.Book;
 import model.builder.BookBuilder;
-import org.junit.Assert;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.Random;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class BookRepositoryMockTest {
 
   private static BookRepository repository;
 
-  @BeforeClass
+  @BeforeAll
   public static void setup() {
     repository = new BookRepositoryCacheDecorator(new BookRepositoryMock());
     System.out.println("@Before");
@@ -30,7 +30,7 @@ public class BookRepositoryMockTest {
     System.out.println("findAll");
     List<Book> allBooks = repository.findAll();
 
-    Assert.assertTrue(allBooks.isEmpty());
+    assertTrue(allBooks.isEmpty());
 
     int nrInsertedBooks = 5;
     for (int i = 0; i < nrInsertedBooks; i++) {
@@ -39,7 +39,7 @@ public class BookRepositoryMockTest {
 
     List<Book> newBooks = repository.findAll();
 
-    Assert.assertEquals(nrInsertedBooks, newBooks.size());
+    assertEquals(nrInsertedBooks, newBooks.size());
   }
 
   @Test
@@ -56,13 +56,13 @@ public class BookRepositoryMockTest {
 
     Optional<Book> foundBook = repository.findById(idToBeFound);
     assertFalse(foundBook.isEmpty());
-    Assert.assertEquals(bookTitle, foundBook.get().getTitle());
+    assertEquals(bookTitle, foundBook.get().getTitle());
   }
 
   @Test
   public void save() {
     long id = -5L;
-    Assert.assertTrue(
+    assertTrue(
         repository.save(new BookBuilder().setTitle("orice").setId(id).build())
     );
     assertNotNull(repository.findById(id));
@@ -71,6 +71,6 @@ public class BookRepositoryMockTest {
   @Test
   public void removeAll() {
     repository.removeAll();
-    Assert.assertTrue(repository.findAll().isEmpty());
+    assertTrue(repository.findAll().isEmpty());
   }
 }
