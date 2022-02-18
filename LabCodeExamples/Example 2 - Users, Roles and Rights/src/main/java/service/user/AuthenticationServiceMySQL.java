@@ -12,9 +12,6 @@ import java.util.Collections;
 
 import static database.Constants.Roles.CUSTOMER;
 
-/**
- * Created by Alex on 11/03/2017.
- */
 public class AuthenticationServiceMySQL implements AuthenticationService {
 
   private final UserRepository userRepository;

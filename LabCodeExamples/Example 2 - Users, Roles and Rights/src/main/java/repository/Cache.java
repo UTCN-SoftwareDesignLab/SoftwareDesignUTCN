@@ -2,9 +2,6 @@ package repository;
 
 import java.util.List;
 
-/**
- * Created by Alex on 07/03/2017.
- */
 public class Cache<T> {
 
   private List<T> storage;

@@ -1,8 +1,5 @@
 package model;
 
-/**
- * Created by Alex on 11/03/2017.
- */
 public class Right {
 
   private Long id;

@@ -6,9 +6,6 @@ import repository.Cache;
 import java.util.List;
 import java.util.Optional;
 
-/**
- * Created by Alex on 07/03/2017.
- */
 public class BookRepositoryCacheDecorator extends BookRepositoryDecorator {
 
   private Cache<Book> cache;

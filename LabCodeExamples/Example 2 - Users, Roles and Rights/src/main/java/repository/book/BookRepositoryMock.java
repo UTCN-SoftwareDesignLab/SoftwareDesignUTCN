@@ -6,9 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-/**
- * Created by Alex on 07/03/2017.
- */
 public class BookRepositoryMock implements BookRepository {
 
   private List<Book> books;

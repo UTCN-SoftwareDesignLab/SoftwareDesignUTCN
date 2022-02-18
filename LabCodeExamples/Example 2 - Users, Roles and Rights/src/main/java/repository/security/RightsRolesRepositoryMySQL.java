@@ -17,9 +17,6 @@ import static database.Constants.Tables.ROLE;
 import static database.Constants.Tables.ROLE_RIGHT;
 import static database.Constants.Tables.USER_ROLE;
 
-/**
- * Created by Alex on 11/03/2017.
- */
 public class RightsRolesRepositoryMySQL implements RightsRolesRepository {
 
   private final Connection connection;

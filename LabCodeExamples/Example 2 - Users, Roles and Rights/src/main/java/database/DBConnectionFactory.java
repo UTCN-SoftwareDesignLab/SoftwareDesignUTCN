@@ -1,8 +1,5 @@
 package database;
 
-/**
- * Created by Alex on 08/03/2017.
- */
 public class DBConnectionFactory {
 
   public JDBConnectionWrapper getConnectionWrapper(boolean test) {

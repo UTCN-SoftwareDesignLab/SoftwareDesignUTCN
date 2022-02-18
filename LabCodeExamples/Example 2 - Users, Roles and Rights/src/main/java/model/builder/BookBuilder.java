@@ -4,9 +4,6 @@ import model.Book;
 
 import java.util.Date;
 
-/**
- * Created by Alex on 07/03/2017.
- */
 public class BookBuilder {
 
   private Book book;

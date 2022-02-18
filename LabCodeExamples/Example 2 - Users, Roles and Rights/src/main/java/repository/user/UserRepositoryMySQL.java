@@ -13,9 +13,6 @@ import java.util.List;
 
 import static database.Constants.Tables.USER;
 
-/**
- * Created by Alex on 11/03/2017.
- */
 public class UserRepositoryMySQL implements UserRepository {
 
   private final Connection connection;

@@ -5,9 +5,6 @@ import model.User;
 
 import java.util.List;
 
-/**
- * Created by Alex on 11/03/2017.
- */
 public class UserBuilder {
 
   private User user;

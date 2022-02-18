@@ -5,9 +5,6 @@ import repository.book.BookRepository;
 
 import java.util.List;
 
-/**
- * Created by Alex on 07/03/2017.
- */
 public class BookServiceImpl implements BookService {
 
   private final BookRepository repository;

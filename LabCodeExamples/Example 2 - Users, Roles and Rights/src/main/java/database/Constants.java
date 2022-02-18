@@ -18,9 +18,6 @@ import static database.Constants.Roles.CUSTOMER;
 import static database.Constants.Roles.EMPLOYEE;
 import static database.Constants.Roles.ROLES;
 
-/**
- * Created by Alex on 11/03/2017.
- */
 public class Constants {
 
   public static Map<String, List<String>> getRolesRights() {
