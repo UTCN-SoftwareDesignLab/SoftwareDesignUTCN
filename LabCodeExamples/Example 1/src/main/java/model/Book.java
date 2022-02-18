@@ -3,9 +3,6 @@ package model;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
-/**
- * Created by Alex on 07/03/2017.
- */
 public class Book {
 
   private Long id;

@@ -4,9 +4,6 @@ import model.Book;
 
 import java.util.List;
 
-/**
- * Created by Alex on 07/03/2017.
- */
 public interface BookService {
 
   List<Book> findAll();

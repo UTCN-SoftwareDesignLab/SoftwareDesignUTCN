@@ -4,9 +4,6 @@ import model.Book;
 
 import java.time.LocalDate;
 
-/**
- * Created by Alex on 07/03/2017.
- */
 public class BookBuilder {
 
   private final Book book;
