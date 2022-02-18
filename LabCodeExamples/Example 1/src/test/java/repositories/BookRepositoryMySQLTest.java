@@ -15,61 +15,61 @@ import java.util.List;
 public class BookRepositoryMySQLTest {
 
 
-    private static BookRepository repository;
+  private static BookRepository repository;
 
-    @BeforeClass
-    public static void setupClass() {
-        JDBConnectionWrapper connectionWrapper = DatabaseConnectionFactory.getConnectionWrapper(true);
-        repository = new BookRepositoryCacheDecorator(new BookRepositoryMySQL(connectionWrapper));
-    }
+  @BeforeClass
+  public static void setupClass() {
+    JDBConnectionWrapper connectionWrapper = DatabaseConnectionFactory.getConnectionWrapper(true);
+    repository = new BookRepositoryCacheDecorator(new BookRepositoryMySQL(connectionWrapper));
+  }
 
-    @Before
-    public void setup() {
-        repository.removeAll();
-    }
+  @Before
+  public void setup() {
+    repository.removeAll();
+  }
 
-    @Test
-    public void findAll() {
-        List<Book> noBooks = repository.findAll();
-        Assert.assertTrue(noBooks.isEmpty());
-    }
+  @Test
+  public void findAll() {
+    List<Book> noBooks = repository.findAll();
+    Assert.assertTrue(noBooks.isEmpty());
+  }
 
-    @Test
-    public void findById() {
-    }
+  @Test
+  public void findById() {
+  }
 
-    @Test
-    public void save() {
-        Book bookNoAuthor = new BookBuilder().setTitle("title")
-                .setPublishedDate(LocalDate.now())
-                .build();
+  @Test
+  public void save() {
+    Book bookNoAuthor = new BookBuilder().setTitle("title")
+        .setPublishedDate(LocalDate.now())
+        .build();
 
-        Assert.assertFalse(repository.save(bookNoAuthor));
+    Assert.assertFalse(repository.save(bookNoAuthor));
 
-        Book bookNoTitle = new BookBuilder().setAuthor("author")
-                .setPublishedDate(LocalDate.now())
-                .build();
+    Book bookNoTitle = new BookBuilder().setAuthor("author")
+        .setPublishedDate(LocalDate.now())
+        .build();
 
-        Assert.assertFalse(repository.save(bookNoTitle));
+    Assert.assertFalse(repository.save(bookNoTitle));
 
-        Book validBook = new BookBuilder()
-                .setAuthor("author")
-                .setTitle("title")
-                .setPublishedDate(LocalDate.now())
-                .build();
+    Book validBook = new BookBuilder()
+        .setAuthor("author")
+        .setTitle("title")
+        .setPublishedDate(LocalDate.now())
+        .build();
 
-        Assert.assertTrue(repository.save(validBook));
-    }
+    Assert.assertTrue(repository.save(validBook));
+  }
 
-    @Test
-    public void removeAll() {
-        repository.save(new BookBuilder()
-                .setTitle("ceva")
-                .setAuthor("autor")
-                .setPublishedDate(LocalDate.now())
-                .build());
-        repository.removeAll();
-        List<Book> noBooks = repository.findAll();
-        Assert.assertTrue(noBooks.isEmpty());
-    }
+  @Test
+  public void removeAll() {
+    repository.save(new BookBuilder()
+        .setTitle("ceva")
+        .setAuthor("autor")
+        .setPublishedDate(LocalDate.now())
+        .build());
+    repository.removeAll();
+    List<Book> noBooks = repository.findAll();
+    Assert.assertTrue(noBooks.isEmpty());
+  }
 }

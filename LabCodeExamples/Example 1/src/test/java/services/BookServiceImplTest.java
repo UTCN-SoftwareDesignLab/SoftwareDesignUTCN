@@ -12,40 +12,40 @@ import java.time.LocalDate;
 
 public class BookServiceImplTest {
 
-    private static BookService service;
+  private static BookService service;
 
-    @BeforeClass
-    public static void setupClass() {
-        BookRepository bookRepositoryMock =
-                new BookRepositoryMock();
-        service = new BookServiceImpl(bookRepositoryMock);
-    }
+  @BeforeClass
+  public static void setupClass() {
+    BookRepository bookRepositoryMock =
+        new BookRepositoryMock();
+    service = new BookServiceImpl(bookRepositoryMock);
+  }
 
-    @Test
-    public void findAll() {
-    }
+  @Test
+  public void findAll() {
+  }
 
-    @Test
-    public void findById() {
-    }
+  @Test
+  public void findById() {
+  }
 
-    @Test
-    public void save() {
-    }
+  @Test
+  public void save() {
+  }
 
-    @Test
-    public void getAgeOfBook() {
-        int publishingYear = 2001;
-        long id = 20;
-        Book book = new BookBuilder()
-                .setId(id)
-                .setTitle("numantereseaza")
-                .setAuthor("oricare")
-                .setPublishedDate(LocalDate.of(publishingYear, 5, 21))
-                .build();
-        service.save(book);
+  @Test
+  public void getAgeOfBook() {
+    int publishingYear = 2001;
+    long id = 20;
+    Book book = new BookBuilder()
+        .setId(id)
+        .setTitle("numantereseaza")
+        .setAuthor("oricare")
+        .setPublishedDate(LocalDate.of(publishingYear, 5, 21))
+        .build();
+    service.save(book);
 
-        int ageOfBook = service.getAgeOfBook(id);
-        Assert.assertEquals(LocalDate.now().getYear() - publishingYear, ageOfBook);
-    }
+    int ageOfBook = service.getAgeOfBook(id);
+    Assert.assertEquals(LocalDate.now().getYear() - publishingYear, ageOfBook);
+  }
 }
