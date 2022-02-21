@@ -26,16 +26,22 @@ public class BookRepositoryCacheDecorator extends BookRepositoryDecorator {
 
   @Override
   public Optional<Book> findById(Long id) {
-    return decoratedRepository.findById(id);
+    if (cache.hasResult()) {
+      return cache.load().stream()
+          .filter(book -> book.getId().equals(id))
+          .findFirst();
+    }
+    final Optional<Book> result = decoratedRepository.findById(id);
+    if (result.isPresent()) {
+      cache.add(result.get());
+      return result;
+    }
+    return Optional.empty();
   }
 
   @Override
   public boolean save(Book book) {
-    boolean somethingChanged = decoratedRepository.save(book);
-    if (somethingChanged) {
-      cache.invalidateCache();
-    }
-    return somethingChanged;
+    return decoratedRepository.save(book);
   }
 
   @Override

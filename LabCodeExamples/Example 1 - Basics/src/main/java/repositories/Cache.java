@@ -1,17 +1,18 @@
 package repositories;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Cache<T> {
 
-  private List<T> storage;
+  private List<T> storage = new ArrayList<>();
 
   public void save(List<T> entities) {
     this.storage = entities;
   }
 
   public boolean hasResult() {
-    return this.storage != null;
+    return !this.storage.isEmpty();
   }
 
   public List<T> load() {
@@ -19,7 +20,10 @@ public class Cache<T> {
   }
 
   public void invalidateCache() {
-    this.storage = null;
+    this.storage.clear();
   }
 
+  public void add(T book) {
+    storage.add(book);
+  }
 }
