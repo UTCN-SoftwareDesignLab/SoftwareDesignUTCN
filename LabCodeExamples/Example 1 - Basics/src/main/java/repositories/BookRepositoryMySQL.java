@@ -1,6 +1,5 @@
 package repositories;
 
-import database.JDBConnectionWrapper;
 import model.Book;
 import model.builder.BookBuilder;
 
@@ -16,15 +15,14 @@ import java.util.Optional;
 
 public class BookRepositoryMySQL implements BookRepository {
 
-  private final JDBConnectionWrapper connectionWrapper;
+  private final Connection connection;
 
-  public BookRepositoryMySQL(JDBConnectionWrapper connectionWrapper) {
-    this.connectionWrapper = connectionWrapper;
+  public BookRepositoryMySQL(Connection connection) {
+    this.connection = connection;
   }
 
   @Override
   public List<Book> findAll() {
-    Connection connection = connectionWrapper.getConnection();
     String sql = "Select * from book";
 
     List<Book> books = new ArrayList<>();
@@ -51,7 +49,6 @@ public class BookRepositoryMySQL implements BookRepository {
 
   @Override
   public boolean save(Book book) {
-    Connection connection = connectionWrapper.getConnection();
     String sql = "INSERT INTO book values (null, ?, ?, ?)";
 
     try {
@@ -69,7 +66,6 @@ public class BookRepositoryMySQL implements BookRepository {
 
   @Override
   public void removeAll() {
-    Connection connection = connectionWrapper.getConnection();
     String sql = "DELETE from book where id >= 0";
 
     try {

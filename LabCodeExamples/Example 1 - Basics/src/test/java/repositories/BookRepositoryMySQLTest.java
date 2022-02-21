@@ -22,7 +22,7 @@ public class BookRepositoryMySQLTest {
   @BeforeAll
   public static void setupClass() {
     JDBConnectionWrapper connectionWrapper = DatabaseConnectionFactory.getConnectionWrapper(true);
-    repository = new BookRepositoryCacheDecorator(new BookRepositoryMySQL(connectionWrapper));
+    repository = new BookRepositoryCacheDecorator(new BookRepositoryMySQL(connectionWrapper.getConnection()));
   }
 
   @BeforeEach
