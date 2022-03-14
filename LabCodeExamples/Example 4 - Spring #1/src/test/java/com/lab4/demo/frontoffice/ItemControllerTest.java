@@ -14,18 +14,18 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.lab4.demo.UrlMapping.FRONT_OFFICE;
+import static com.lab4.demo.UrlMapping.ITEMS;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-class FrontOfficeControllerTest {
+class ItemControllerTest {
 
     protected MockMvc mockMvc;
 
     @InjectMocks
-    private FrontOfficeController controller;
+    private ItemController controller;
 
     @Mock
     private ItemService itemService;
@@ -33,7 +33,7 @@ class FrontOfficeControllerTest {
     @BeforeEach
     public void setUp() {
         MockitoAnnotations.openMocks(this);
-        controller = new FrontOfficeController(itemService);
+        controller = new ItemController(itemService);
         mockMvc = MockMvcBuilders.standaloneSetup(controller).build();
     }
 
@@ -47,7 +47,7 @@ class FrontOfficeControllerTest {
 
         when(itemService.findAll()).thenReturn(items);
 
-        ResultActions response = mockMvc.perform(get(FRONT_OFFICE));
+        ResultActions response = mockMvc.perform(get(ITEMS));
 
         String expectedJsonContent = new ObjectMapper().writeValueAsString(items);
         response.andExpect(status().isOk())

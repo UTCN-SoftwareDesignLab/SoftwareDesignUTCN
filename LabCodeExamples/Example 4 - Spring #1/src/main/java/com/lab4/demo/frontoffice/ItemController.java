@@ -8,12 +8,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-import static com.lab4.demo.UrlMapping.FRONT_OFFICE;
+import static com.lab4.demo.UrlMapping.ITEMS;
 
 @RestController
-@RequestMapping(FRONT_OFFICE)
+@RequestMapping(ITEMS)
 @RequiredArgsConstructor
-public class FrontOfficeController {
+public class ItemController {
 
     private final ItemService itemService;
 
