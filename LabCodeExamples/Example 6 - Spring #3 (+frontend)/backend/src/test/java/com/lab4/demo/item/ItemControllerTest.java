@@ -1,7 +1,7 @@
-package com.lab4.demo.frontoffice;
+package com.lab4.demo.item;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.lab4.demo.frontoffice.model.Item;
+import com.lab4.demo.item.model.Item;
 import com.lab4.demo.report.CSVReportService;
 import com.lab4.demo.report.PdfReportService;
 import com.lab4.demo.report.ReportServiceFactory;
@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.lab4.demo.UrlMapping.EXPORT_REPORT;
-import static com.lab4.demo.UrlMapping.FRONT_OFFICE;
+import static com.lab4.demo.UrlMapping.ITEMS;
 import static com.lab4.demo.report.ReportType.CSV;
 import static com.lab4.demo.report.ReportType.PDF;
 import static org.mockito.Mockito.when;
@@ -26,12 +26,12 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-class FrontOfficeControllerTest {
+class ItemControllerTest {
 
     protected MockMvc mockMvc;
 
     @InjectMocks
-    private FrontOfficeController controller;
+    private ItemController controller;
 
     @Mock
     private ItemService itemService;
@@ -48,7 +48,7 @@ class FrontOfficeControllerTest {
     @BeforeEach
     public void setUp() {
         MockitoAnnotations.openMocks(this);
-        controller = new FrontOfficeController(itemService, reportServiceFactory);
+        controller = new ItemController(itemService, reportServiceFactory);
         mockMvc = MockMvcBuilders.standaloneSetup(controller).build();
     }
 
@@ -62,7 +62,7 @@ class FrontOfficeControllerTest {
 
         when(itemService.findAll()).thenReturn(items);
 
-        ResultActions response = mockMvc.perform(get(FRONT_OFFICE));
+        ResultActions response = mockMvc.perform(get(ITEMS));
 
         String expectedJsonContent = new ObjectMapper().writeValueAsString(items);
         response.andExpect(status().isOk())
@@ -79,8 +79,8 @@ class FrontOfficeControllerTest {
         String csvResponse = "CSV!";
         when(csvReportService.export()).thenReturn(csvResponse);
 
-        ResultActions pdfExport = mockMvc.perform(get(FRONT_OFFICE + EXPORT_REPORT, PDF.name()));
-        ResultActions csvExport = mockMvc.perform(get(FRONT_OFFICE + EXPORT_REPORT, CSV.name()));
+        ResultActions pdfExport = mockMvc.perform(get(ITEMS + EXPORT_REPORT, PDF.name()));
+        ResultActions csvExport = mockMvc.perform(get(ITEMS + EXPORT_REPORT, CSV.name()));
 
         pdfExport.andExpect(status().isOk())
                 .andExpect(content().string(pdfResponse));

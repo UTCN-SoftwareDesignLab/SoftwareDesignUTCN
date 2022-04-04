@@ -1,6 +1,6 @@
-package com.lab4.demo.frontoffice;
+package com.lab4.demo.item;
 
-import com.lab4.demo.frontoffice.model.Item;
+import com.lab4.demo.item.model.Item;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

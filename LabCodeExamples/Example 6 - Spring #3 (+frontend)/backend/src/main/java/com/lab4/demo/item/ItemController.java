@@ -1,6 +1,6 @@
-package com.lab4.demo.frontoffice;
+package com.lab4.demo.item;
 
-import com.lab4.demo.frontoffice.model.Item;
+import com.lab4.demo.item.model.Item;
 import com.lab4.demo.report.ReportServiceFactory;
 import com.lab4.demo.report.ReportType;
 import lombok.RequiredArgsConstructor;
@@ -12,12 +12,12 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 import static com.lab4.demo.UrlMapping.EXPORT_REPORT;
-import static com.lab4.demo.UrlMapping.FRONT_OFFICE;
+import static com.lab4.demo.UrlMapping.ITEMS;
 
 @RestController
-@RequestMapping(FRONT_OFFICE)
+@RequestMapping(ITEMS)
 @RequiredArgsConstructor
-public class FrontOfficeController {
+public class ItemController {
 
     private final ItemService itemService;
     private final ReportServiceFactory reportServiceFactory;

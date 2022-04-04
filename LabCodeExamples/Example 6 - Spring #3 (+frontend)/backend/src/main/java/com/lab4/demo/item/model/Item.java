@@ -1,4 +1,4 @@
-package com.lab4.demo.frontoffice.model;
+package com.lab4.demo.item.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

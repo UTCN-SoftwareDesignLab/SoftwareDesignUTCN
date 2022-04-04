@@ -1,7 +1,6 @@
-package com.lab4.demo.frontoffice;
+package com.lab4.demo.item;
 
-import com.lab4.demo.frontoffice.model.Item;
-import org.junit.jupiter.api.AfterEach;
+import com.lab4.demo.item.model.Item;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
