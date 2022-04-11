@@ -36,19 +36,10 @@ class ItemControllerTest {
     @Mock
     private ItemService itemService;
 
-    @Mock
-    private ReportServiceFactory reportServiceFactory;
-
-    @Mock
-    private CSVReportService csvReportService;
-
-    @Mock
-    private PdfReportService pdfReportService;
-
     @BeforeEach
     public void setUp() {
         MockitoAnnotations.openMocks(this);
-        controller = new ItemController(itemService, reportServiceFactory);
+        controller = new ItemController(itemService);
         mockMvc = MockMvcBuilders.standaloneSetup(controller).build();
     }
 
@@ -72,20 +63,17 @@ class ItemControllerTest {
 
     @Test
     void exportReport() throws Exception {
-        when(reportServiceFactory.getReportService(PDF)).thenReturn(pdfReportService);
-        when(reportServiceFactory.getReportService(CSV)).thenReturn(csvReportService);
-        String pdfResponse = "PDF!";
-        when(pdfReportService.export()).thenReturn(pdfResponse);
-        String csvResponse = "CSV!";
-        when(csvReportService.export()).thenReturn(csvResponse);
+        final String csv = "csv";
+        final String pdf = "pdf";
+        when(itemService.export(CSV)).thenReturn(csv);
+        when(itemService.export(PDF)).thenReturn(pdf);
 
-        ResultActions pdfExport = mockMvc.perform(get(ITEMS + EXPORT_REPORT, PDF.name()));
-        ResultActions csvExport = mockMvc.perform(get(ITEMS + EXPORT_REPORT, CSV.name()));
+        ResultActions responseCsv = mockMvc.perform(get(ITEMS + EXPORT_REPORT, CSV.name()));
+        ResultActions responsePdf = mockMvc.perform(get(ITEMS + EXPORT_REPORT, PDF.name()));
 
-        pdfExport.andExpect(status().isOk())
-                .andExpect(content().string(pdfResponse));
-        csvExport.andExpect(status().isOk())
-                .andExpect(content().string(csvResponse));
-
+        responseCsv.andExpect(status().isOk())
+                .andExpect(content().string(csv));
+        responsePdf.andExpect(status().isOk())
+                .andExpect(content().string(pdf));
     }
 }

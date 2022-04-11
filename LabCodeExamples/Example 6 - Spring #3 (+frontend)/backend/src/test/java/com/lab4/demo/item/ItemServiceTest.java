@@ -1,6 +1,7 @@
 package com.lab4.demo.item;
 
 import com.lab4.demo.item.model.Item;
+import com.lab4.demo.report.ReportServiceFactory;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -21,10 +22,13 @@ class ItemServiceTest {
     @Mock
     private ItemRepository itemRepository;
 
+    @Mock
+    private ReportServiceFactory reportServiceFactory;
+
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
-        itemService = new ItemService(itemRepository);
+        itemService = new ItemService(itemRepository, reportServiceFactory);
     }
 
     @Test

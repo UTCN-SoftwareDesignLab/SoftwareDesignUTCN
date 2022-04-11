@@ -57,7 +57,7 @@ class ItemControllerTest extends BaseControllerTest {
         List<ItemDTO> items = TestCreationFactory.listOf(Item.class);
         when(itemService.findAll()).thenReturn(items);
 
-        ResultActions response = mockMvc.perform(get(ITEMS));
+        ResultActions response = performGet(ITEMS);
 
         response.andExpect(status().isOk())
                 .andExpect(jsonContentToBe(items));

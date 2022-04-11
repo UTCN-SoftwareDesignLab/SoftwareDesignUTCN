@@ -20,7 +20,6 @@ import static com.lab4.demo.UrlMapping.ITEMS;
 public class ItemController {
 
     private final ItemService itemService;
-    private final ReportServiceFactory reportServiceFactory;
 
     @GetMapping
     public List<Item> allItems() {
@@ -29,6 +28,6 @@ public class ItemController {
 
     @GetMapping(EXPORT_REPORT)
     public String exportReport(@PathVariable ReportType type) {
-        return reportServiceFactory.getReportService(type).export();
+        return itemService.export(type);
     }
 }
