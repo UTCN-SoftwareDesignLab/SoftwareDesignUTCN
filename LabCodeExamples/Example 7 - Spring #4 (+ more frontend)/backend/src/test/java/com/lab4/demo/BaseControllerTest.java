@@ -40,6 +40,13 @@ public abstract class BaseControllerTest {
                 .accept(MediaType.APPLICATION_JSON));
     }
 
+    protected ResultActions performPutWithRequestBodyAndPathVariables(String path, Object body, Object... pathVariables) throws Exception {
+        return mockMvc.perform(put(path, pathVariables)
+                .   content(asJsonString(body))
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON));
+    }
+
     protected String asJsonString(final Object obj) {
         try {
             ObjectMapper mapper = new ObjectMapper();

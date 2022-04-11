@@ -82,17 +82,20 @@ export default {
   }),
   methods: {
     attemptLogin() {
-      this.$store.dispatch("auth/login", this.login).then(() => {
-        if (this.$store.state.auth.status.loggedIn) {
-          if (this.$store.getters["auth/isAdmin"]) {
-            router.push("/users");
+      this.$store
+        .dispatch("auth/login", this.login)
+
+        .then(() => {
+          if (this.$store.state.auth.status.loggedIn) {
+            if (this.$store.getters["auth/isAdmin"]) {
+              router.push("/users");
+            } else {
+              router.push("/items");
+            }
           } else {
-            router.push("/items");
+            alert("Invalid credentials!");
           }
-        } else {
-          alert("Invalid credentials!");
-        }
-      });
+        });
     },
     async attemptRegister() {
       await this.$store.dispatch("auth/register", this.login);

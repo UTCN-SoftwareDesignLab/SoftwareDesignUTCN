@@ -3,7 +3,6 @@ import { BASE_URL, HTTP } from "../http";
 export default {
   login(data) {
     return HTTP.post(BASE_URL + "/auth/sign-in", data).then((response) => {
-      console.log(response);
       if (response.data.token) {
         localStorage.setItem("user", JSON.stringify(response.data));
       }
