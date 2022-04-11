@@ -2,6 +2,8 @@ package com.lab4.demo.item;
 
 import com.lab4.demo.item.model.Item;
 import com.lab4.demo.item.model.dto.ItemDTO;
+import com.lab4.demo.report.ReportServiceFactory;
+import com.lab4.demo.report.ReportType;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +15,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class ItemService {
 
+    private final ReportServiceFactory reportServiceFactory;
     private final ItemRepository itemRepository;
     private final ItemMapper itemMapper;
 
@@ -40,5 +43,9 @@ public class ItemService {
         return itemMapper.toDto(
                 itemRepository.save(actItem)
         );
+    }
+
+    public String export(ReportType type) {
+        return reportServiceFactory.getReportService(type).export();
     }
 }
