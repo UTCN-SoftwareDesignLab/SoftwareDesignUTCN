@@ -1,5 +1,5 @@
 
-# Useful Links:
+# Useful Links: (deprecated, will update soon!)
 
 - [Lab Schedule (_"More like what you'd call guidelines than actual rules**"_)](https://github.com/SoftwareDesign2017/SoftwareDesign2017/blob/master/Resources/Schedule.pdf)
 - [Project related documents](https://github.com/SoftwareDesign2017/SoftwareDesign2017/tree/master/Resources/Projects)
