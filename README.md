@@ -1,5 +1,5 @@
 
-# Useful Links:
+# Useful Links: (deprecated, will update soon!)
 
 - [Lab Schedule (_"More like what you'd call guidelines than actual rules**"_)](https://github.com/SoftwareDesign2017/SoftwareDesign2017/blob/master/Resources/Schedule.pdf)
 - [Project related documents](https://github.com/SoftwareDesign2017/SoftwareDesign2017/tree/master/Resources/Projects)
@@ -20,7 +20,7 @@
 
 ### Lab 3:
 - [Factory / User roles/rights](https://github.com/UTCN-SoftwareDesignLab/SoftwareDesignUTCN/tree/master/LabCodeExamples/Example%202%20-%20Users%2C%20Roles%20and%20Rights)
-- [Is TDD dead? (thank you Theodor!)](https://www.youtube.com/watch?v=z9quxZsLcfo&list=PLJb2p0qX8R_qSRhs14CiwKuDuzERXSU8m)
+- [Is TDD dead?](https://www.youtube.com/watch?v=z9quxZsLcfo&list=PLJb2p0qX8R_qSRhs14CiwKuDuzERXSU8m)
 - [Fowler's Notification pattern](https://martinfowler.com/articles/replaceThrowWithNotification.html)
 - [Java Exceptions - Best Practices 1](http://javarevisited.blogspot.ro/2013/03/0-exception-handling-best-practices-in-Java-Programming.html)
 - [Java Exceptions - Best Practices 1](https://www.javacodegeeks.com/2013/07/java-exception-handling-tutorial-with-examples-and-best-practices.html)
