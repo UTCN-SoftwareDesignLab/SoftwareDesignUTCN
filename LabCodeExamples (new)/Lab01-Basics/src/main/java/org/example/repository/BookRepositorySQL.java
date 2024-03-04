@@ -1,29 +1,25 @@
-package repositories;
+package org.example.repository;
 
-import model.Book;
-import model.builder.BookBuilder;
+import org.example.model.Book;
+import org.example.model.BookBuilder;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class BookRepositoryMySQL implements BookRepository {
+public class BookRepositorySQL implements BookRepository {
 
   private final Connection connection;
 
-  public BookRepositoryMySQL(Connection connection) {
+  public BookRepositorySQL(Connection connection) {
     this.connection = connection;
   }
 
   @Override
   public List<Book> findAll() {
-    String sql = "Select * from book";
+    final String sql = "Select * from book";
 
     List<Book> books = new ArrayList<>();
 
@@ -43,12 +39,11 @@ public class BookRepositoryMySQL implements BookRepository {
 
   @Override
   public Optional<Book> findById(Long id) {
-    //todo: implement
     return Optional.empty();
   }
 
   @Override
-  public boolean save(Book book) {
+  public boolean create(Book book) {
     String sql = "INSERT INTO book values (null, ?, ?, ?)";
 
     try {
