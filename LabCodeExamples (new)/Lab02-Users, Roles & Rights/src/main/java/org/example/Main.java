@@ -1,5 +1,6 @@
 package org.example;
 
+import org.example.database.Bootstrap;
 import org.example.database.DatabaseConnectionFactory;
 import org.example.database.DbConnection;
 import org.example.model.Book;
@@ -15,6 +16,9 @@ import static org.example.database.SupportedDatabase.MYSQL;
 
 public class Main {
   public static void main(String[] args) throws SQLException {
+    new Bootstrap().boostrap();
+
+
     DbConnection connectionWrapper = DatabaseConnectionFactory.getConnectionWrapper(MYSQL, true);
 
     if (connectionWrapper.testConnection()) {

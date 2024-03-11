@@ -20,9 +20,7 @@ public class Bootstrap {
 
   public void boostrap() throws SQLException {
     dropAll();
-
     createTables();
-
     createUserData();
   }
 
@@ -36,9 +34,9 @@ public class Bootstrap {
 
       String[] dropStatements = {
           "TRUNCATE `user_role`;",
-          "DROP TABLE `user_role`;",
+          "DROP TABLE IF EXISTS `user_role`;",
           "TRUNCATE `role`;",
-          "DROP TABLE  `book`, `role`, `user`;"
+          "DROP TABLE IF EXISTS `book`, `role`, `user`;"
       };
 
       Arrays.stream(dropStatements).forEach(dropStatement -> {
