@@ -14,6 +14,8 @@ public interface UserRepository {
 
   void removeAll();
 
+  void deleteAll();
+
 //  Response<Boolean> existsByUsername(String email);
 
 }

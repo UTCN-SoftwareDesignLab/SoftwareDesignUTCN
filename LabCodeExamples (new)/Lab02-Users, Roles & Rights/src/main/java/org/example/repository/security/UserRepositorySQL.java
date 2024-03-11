@@ -74,4 +74,15 @@ public class UserRepositorySQL implements UserRepository {
   public void removeAll() {
 
   }
+
+  @Override
+  public void deleteAll() {
+    try {
+      Statement statement = connection.createStatement();
+      String sql = "DELETE from user where id >= 0";
+      statement.executeUpdate(sql);
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+  }
 }

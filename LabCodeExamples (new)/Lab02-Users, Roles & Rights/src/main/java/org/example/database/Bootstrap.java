@@ -90,7 +90,8 @@ public class Bootstrap {
 
   private void createUsers(String schema) {
     JDBConnectionWrapper connectionWrapper = new JDBConnectionWrapper(schema);
-    userRepository = new UserRepositorySQL(connectionWrapper.getConnection());
+    roleRepository = new RoleRepositorySQL(connectionWrapper.getConnection());
+    userRepository = new UserRepositorySQL(connectionWrapper.getConnection(), roleRepository);
     // ...
   }
 }
