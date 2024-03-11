@@ -1,7 +1,8 @@
 package org.example.repository.security;
 
-import org.example.model.authentication.Role;
-import org.example.model.authentication.User;
+import org.example.model.security.ERole;
+import org.example.model.security.Role;
+import org.example.model.security.User;
 
 import java.sql.*;
 import java.util.List;
@@ -16,11 +17,11 @@ public class RoleRepositorySQL implements RoleRepository {
   }
 
   @Override
-  public void create(String role) {
+  public void create(ERole role) {
     try {
       PreparedStatement insertStatement = connection
           .prepareStatement("INSERT IGNORE INTO " + ROLE + " values (null, ?)");
-      insertStatement.setString(1, role);
+      insertStatement.setString(1, role.toString());
       insertStatement.executeUpdate();
     } catch (SQLException e) {
 
@@ -28,11 +29,12 @@ public class RoleRepositorySQL implements RoleRepository {
   }
 
   @Override
-  public Role findRoleByTitle(String role) {
+  // todo: change to optional
+  public Role findRoleByTitle(ERole role) {
     Statement statement;
     try {
       statement = connection.createStatement();
-      String fetchRoleSql = "Select * from " + ROLE + " where `role`=\'" + role + "\'";
+      String fetchRoleSql = "Select * from " + ROLE + " where `role`=\'" + role.toString() + "\'";
       ResultSet roleResultSet = statement.executeQuery(fetchRoleSql);
       roleResultSet.next();
       Long roleId = roleResultSet.getLong("id");
@@ -45,11 +47,13 @@ public class RoleRepositorySQL implements RoleRepository {
   }
 
   @Override
+  // todo: implement
   public List<Role> findRolesForUser(long userId) {
     return null;
   }
 
   @Override
+  // todo: implement
   public void addRolesToUser(User user, List<Role> roles) {
 
   }

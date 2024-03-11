@@ -1,10 +1,9 @@
 package org.example.repository.security;
 
-import org.example.model.authentication.User;
-import org.example.model.authentication.UserBuilder;
+import org.example.model.security.User;
+import org.example.model.security.UserBuilder;
 
 import java.sql.*;
-import java.util.List;
 
 import static org.example.database.Constants.TABLES.USER;
 
@@ -18,8 +17,8 @@ public class UserRepositorySQL implements UserRepository {
     this.roleRepository = roleRepository;
   }
 
-
   @Override
+  // todo: implement with optional
   public User findByUsernameAndPassword(String username, String password) {
     try {
       Statement statement = connection.createStatement();
@@ -29,13 +28,11 @@ public class UserRepositorySQL implements UserRepository {
       ResultSet userResultSet = statement.executeQuery(fetchUserSql);
       userResultSet.next();
 
-      User user = new UserBuilder()
+      return new UserBuilder()
           .setUsername(userResultSet.getString("username"))
           .setPassword(userResultSet.getString("password"))
           .setRoles(roleRepository.findRolesForUser(userResultSet.getLong("id")))
           .build();
-
-      return user;
     } catch (SQLException e) {
       System.out.println(e);
     }
@@ -43,7 +40,7 @@ public class UserRepositorySQL implements UserRepository {
   }
 
   @Override
-  public boolean create(User user) {
+  public User create(User user) throws SQLException {
     try {
       PreparedStatement insertUserStatement = connection
           .prepareStatement("INSERT INTO user values (null, ?, ?)", Statement.RETURN_GENERATED_KEYS);
@@ -58,10 +55,10 @@ public class UserRepositorySQL implements UserRepository {
 
       roleRepository.addRolesToUser(user, user.getRoles());
 
-      return true;
+      return user;
     } catch (SQLException e) {
       e.printStackTrace();
-      return false;
+      throw new SQLException(e);
     }
   }
 

@@ -1,17 +1,15 @@
 package org.example.repository.security;
 
-import org.example.model.authentication.User;
+import org.example.model.security.User;
 
-import java.util.List;
+import java.sql.SQLException;
 
 public interface UserRepository {
-
   User findByUsernameAndPassword(String username, String password);
 
-  boolean create(User user);
+  User create(User user) throws SQLException;
 
   void deleteAll();
 
 //  Response<Boolean> existsByUsername(String email);
-
 }

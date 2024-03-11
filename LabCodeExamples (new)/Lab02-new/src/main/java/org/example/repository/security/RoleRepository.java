@@ -1,15 +1,15 @@
 package org.example.repository.security;
 
-import org.example.model.authentication.Role;
-import org.example.model.authentication.User;
+import org.example.model.security.ERole;
+import org.example.model.security.Role;
+import org.example.model.security.User;
 
 import java.util.List;
 
 public interface RoleRepository {
+  void create(ERole role);
 
-  void create(String role);
-
-  Role findRoleByTitle(String role);
+  Role findRoleByTitle(ERole role);
 
   List<Role> findRolesForUser(long userId);
 
