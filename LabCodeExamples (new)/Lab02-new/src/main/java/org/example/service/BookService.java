@@ -1,7 +1,7 @@
-package org.example.service.book;
+package org.example.service;
 
-import org.example.model.book.Book;
-import org.example.repository.book.BookRepository;
+import org.example.model.Book;
+import org.example.repository.BookRepository;
 
 import java.util.List;
 
@@ -9,9 +9,8 @@ public class BookService {
 
   private final BookRepository repository;
 
-
-  public BookService(BookRepository bookRepository) {
-    this.repository = bookRepository;
+  public BookService(BookRepository repository) {
+    this.repository = repository;
   }
 
   public List<Book> findAll() {
