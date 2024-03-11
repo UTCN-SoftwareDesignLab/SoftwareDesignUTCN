@@ -48,11 +48,15 @@ public class BookRepositorySQL implements BookRepository {
 
     try {
       PreparedStatement insertStatement = connection
-          .prepareStatement(sql);
+          .prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
       insertStatement.setString(1, book.getAuthor());
       insertStatement.setString(2, book.getTitle());
       insertStatement.setDate(3, new java.sql.Date(book.getPublishedDate().toEpochDay()));
       insertStatement.executeUpdate();
+      ResultSet generatedKeys = insertStatement.getGeneratedKeys();
+      generatedKeys.next();
+      long bookId = generatedKeys.getLong(1);
+      book.setId(bookId);
       return true;
     } catch (SQLException e) {
       return false;

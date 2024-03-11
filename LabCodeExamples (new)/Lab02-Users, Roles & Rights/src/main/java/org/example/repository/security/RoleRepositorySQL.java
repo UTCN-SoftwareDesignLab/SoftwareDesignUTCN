@@ -1,8 +1,10 @@
 package org.example.repository.security;
 
 import org.example.model.authentication.Role;
+import org.example.model.authentication.User;
 
 import java.sql.Connection;
+import java.util.List;
 
 public class RoleRepositorySQL implements RoleRepository {
   private final Connection connection;
@@ -24,5 +26,15 @@ public class RoleRepositorySQL implements RoleRepository {
   @Override
   public Role findRoleByTitle(String role) {
     return null;
+  }
+
+  @Override
+  public List<Role> findRolesForUser(long userId) {
+    return null;
+  }
+
+  @Override
+  public void addRolesToUser(User user, List<Role> roles) {
+
   }
 }
