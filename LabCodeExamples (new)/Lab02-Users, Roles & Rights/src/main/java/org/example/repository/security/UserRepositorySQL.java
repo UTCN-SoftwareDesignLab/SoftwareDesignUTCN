@@ -71,11 +71,6 @@ public class UserRepositorySQL implements UserRepository {
   }
 
   @Override
-  public void removeAll() {
-
-  }
-
-  @Override
   public void deleteAll() {
     try {
       Statement statement = connection.createStatement();
