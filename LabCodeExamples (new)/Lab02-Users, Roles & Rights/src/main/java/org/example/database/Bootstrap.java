@@ -85,7 +85,7 @@ public class Bootstrap {
   private void createRoles(String schema) {
     JDBConnectionWrapper connectionWrapper = new JDBConnectionWrapper(schema);
     roleRepository = new RoleRepositorySQL(connectionWrapper.getConnection());
-    for (String role : Constants.Roles.ROLES) {
+    for (String role : Constants.ROLES.ROLES) {
       roleRepository.create(role);
     }
   }
