@@ -16,8 +16,7 @@ import static org.example.database.SupportedDatabase.MYSQL;
 
 public class Main {
   public static void main(String[] args) throws SQLException {
-    new Bootstrap().boostrap();
-
+    new Bootstrap().bootstrap();
 
     DbConnection connectionWrapper = DatabaseConnectionFactory.getConnectionWrapper(MYSQL, true);
 

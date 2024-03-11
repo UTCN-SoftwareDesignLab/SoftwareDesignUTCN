@@ -3,6 +3,7 @@ package org.example.repository.book;
 import org.example.model.book.Book;
 import org.example.repository.Cache;
 
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
@@ -41,8 +42,8 @@ public class BookRepositoryCacheDecorator extends BookRepositoryDecorator {
   }
 
   @Override
-  public boolean create(Book book) {
-    boolean res = decoratedRepository.create(book);
+  public Book create(Book book) throws SQLException {
+    Book res = decoratedRepository.create(book);
     cache.add(book);
     return res;
   }

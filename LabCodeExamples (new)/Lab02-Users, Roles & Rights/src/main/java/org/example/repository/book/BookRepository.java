@@ -2,6 +2,7 @@ package org.example.repository.book;
 
 import org.example.model.book.Book;
 
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
@@ -11,7 +12,7 @@ public interface BookRepository {
 
   Optional<Book> findById(Long id);
 
-  boolean create(Book book);
+  Book create(Book book) throws SQLException;
 
   void removeAll();
 

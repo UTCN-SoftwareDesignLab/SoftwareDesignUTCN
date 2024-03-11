@@ -27,8 +27,9 @@ public class BookRepositoryMock implements BookRepository {
   }
 
   @Override
-  public boolean create(Book book) {
-    return books.add(book);
+  public Book create(Book book) {
+    books.add(book);
+    return book;
   }
 
   @Override

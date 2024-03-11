@@ -1,5 +1,6 @@
 package org.example.database;
 
+import org.example.model.security.ERole;
 import org.example.repository.security.RoleRepository;
 import org.example.repository.security.RoleRepositorySQL;
 import org.example.repository.security.UserRepository;
@@ -12,13 +13,11 @@ import java.util.Arrays;
 
 import static org.example.database.Constants.SCHEMAS.SCHEMAS;
 
-
 public class Bootstrap {
-
   private RoleRepository roleRepository;
   private UserRepository userRepository;
 
-  public void boostrap() throws SQLException {
+  public void bootstrap() throws SQLException {
     dropAll();
     createTables();
     createUserData();
@@ -30,7 +29,6 @@ public class Bootstrap {
 
       Connection connection = new JDBConnectionWrapper(schema).getConnection();
       Statement statement = connection.createStatement();
-
 
       String[] dropStatements = {
           "TRUNCATE `user_role`;",
@@ -47,8 +45,6 @@ public class Bootstrap {
         }
       });
     }
-
-    System.out.println("Done table bootstrap");
   }
 
   private void createTables() throws SQLException {
@@ -67,8 +63,6 @@ public class Bootstrap {
         statement.execute(createTableSQL);
       }
     }
-
-    System.out.println("Done table bootstrap");
   }
 
   private void createUserData() {
@@ -83,7 +77,7 @@ public class Bootstrap {
   private void createRoles(String schema) {
     JDBConnectionWrapper connectionWrapper = new JDBConnectionWrapper(schema);
     roleRepository = new RoleRepositorySQL(connectionWrapper.getConnection());
-    for (String role : Constants.ROLES.ROLES) {
+    for (ERole role : ERole.values()) {
       roleRepository.create(role);
     }
   }

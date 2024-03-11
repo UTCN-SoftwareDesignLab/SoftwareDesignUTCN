@@ -4,7 +4,6 @@ import org.example.model.book.Book;
 import org.example.model.book.BookBuilder;
 
 import java.sql.*;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -39,11 +38,25 @@ public class BookRepositorySQL implements BookRepository {
 
   @Override
   public Optional<Book> findById(Long id) {
+    final String sql = "Select * from book where id = ?";
+
+    try {
+      PreparedStatement statement = connection.prepareStatement(sql);
+      statement.setLong(1, id);
+      ResultSet resultSet = statement.executeQuery();
+
+      if (resultSet.next()) {
+        return Optional.of(getBookFromResultSet(resultSet));
+      }
+    } catch (SQLException throwables) {
+      throwables.printStackTrace();
+    }
+
     return Optional.empty();
   }
 
   @Override
-  public boolean create(Book book) {
+  public Book create(Book book) throws SQLException {
     String sql = "INSERT INTO book values (null, ?, ?, ?)";
 
     try {
@@ -51,15 +64,16 @@ public class BookRepositorySQL implements BookRepository {
           .prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
       insertStatement.setString(1, book.getAuthor());
       insertStatement.setString(2, book.getTitle());
-      insertStatement.setDate(3, new java.sql.Date(book.getPublishedDate().toEpochDay()));
+      insertStatement.setDate(3, Date.valueOf(book.getPublishedDate()));
       insertStatement.executeUpdate();
+
       ResultSet generatedKeys = insertStatement.getGeneratedKeys();
       generatedKeys.next();
       long bookId = generatedKeys.getLong(1);
       book.setId(bookId);
-      return true;
+      return book;
     } catch (SQLException e) {
-      return false;
+      throw new SQLException(e);
     }
   }
 
@@ -80,7 +94,7 @@ public class BookRepositorySQL implements BookRepository {
         .setId(rs.getLong("id"))
         .setTitle(rs.getString("title"))
         .setAuthor(rs.getString("author"))
-        .setPublishedDate(LocalDate.ofEpochDay(rs.getDate("publishedDate").getTime()))
+        .setPublishedDate(rs.getDate("publishedDate").toLocalDate())
         .build();
   }
 }
