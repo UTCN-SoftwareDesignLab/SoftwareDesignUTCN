@@ -40,4 +40,10 @@ public class Book {
   public void setPublishedDate(LocalDate publishedDate) {
     this.publishedDate = publishedDate;
   }
+
+  public int getAge() {
+    int yearOfPublishing = publishedDate.getYear();
+    int yearToday = LocalDate.now().getYear();
+    return yearToday - yearOfPublishing;
+  }
 }
