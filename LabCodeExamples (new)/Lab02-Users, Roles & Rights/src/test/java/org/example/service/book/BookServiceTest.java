@@ -2,8 +2,8 @@ package org.example.service.book;
 
 import org.example.model.Book;
 import org.example.model.BookBuilder;
-import org.example.repository.BookRepository;
-import org.example.repository.BookRepositoryMock;
+import org.example.repository.book.BookRepository;
+import org.example.repository.book.BookRepositoryMock;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;

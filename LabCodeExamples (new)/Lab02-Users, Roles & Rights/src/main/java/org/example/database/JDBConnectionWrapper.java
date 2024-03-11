@@ -17,24 +17,9 @@ public class JDBConnectionWrapper extends DbConnection {
     try {
       Class.forName(JDBC_DRIVER);
       connection = DriverManager.getConnection(DB_URL + schema, USER, PASS);
-      createTables();
     } catch (ClassNotFoundException | SQLException e) {
       e.printStackTrace();
     }
-  }
-
-  private void createTables() throws SQLException {
-    Statement statement = connection.createStatement();
-
-    String sql = "CREATE TABLE IF NOT EXISTS book (" +
-        "  id int(11) NOT NULL AUTO_INCREMENT," +
-        "  author varchar(500) NOT NULL," +
-        "  title varchar(500) NOT NULL," +
-        "  publishedDate datetime DEFAULT NULL," +
-        "  PRIMARY KEY (id)," +
-        "  UNIQUE KEY id_UNIQUE (id)" +
-        ") ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;";
-    statement.execute(sql);
   }
 
   public boolean testConnection() throws SQLException {

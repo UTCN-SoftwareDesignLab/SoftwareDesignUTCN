@@ -4,9 +4,9 @@ import org.example.database.DatabaseConnectionFactory;
 import org.example.database.DbConnection;
 import org.example.model.Book;
 import org.example.model.BookBuilder;
-import org.example.repository.BookRepository;
-import org.example.repository.BookRepositoryCacheDecorator;
-import org.example.repository.BookRepositorySQL;
+import org.example.repository.book.BookRepository;
+import org.example.repository.book.BookRepositoryCacheDecorator;
+import org.example.repository.book.BookRepositorySQL;
 
 import java.sql.SQLException;
 import java.time.LocalDate;

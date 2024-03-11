@@ -1,7 +1,7 @@
 package org.example.service.book;
 
 import org.example.model.Book;
-import org.example.repository.BookRepository;
+import org.example.repository.book.BookRepository;
 
 import java.util.List;
 

@@ -63,7 +63,6 @@ public class Boostrap {
     for (String schema : SCHEMAS) {
       System.out.println("Bootstrapping " + schema + " schema");
 
-
       JDBConnectionWrapper connectionWrapper = new JDBConnectionWrapper(schema);
       Connection connection = connectionWrapper.getConnection();
 

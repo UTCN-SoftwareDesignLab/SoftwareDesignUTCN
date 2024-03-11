@@ -1,12 +1,12 @@
 package org.example.database;
 
+import static org.example.database.Constants.SCHEMAS.PRODUCTION;
+import static org.example.database.Constants.SCHEMAS.TEST;
+
 public class DatabaseConnectionFactory {
 
-  private static final String TEST_SCHEMA = "sd-basics-test";
-  private static final String SCHEMA = "sd-basics";
-
   public static DbConnection getConnectionWrapper(SupportedDatabase db, boolean test) {
-    final String schema = test ? TEST_SCHEMA : SCHEMA;
+    final String schema = test ? TEST : PRODUCTION;
     switch (db) {
       case MYSQL:
         return new JDBConnectionWrapper(schema);

@@ -1,4 +1,4 @@
-package org.example.repository;
+package org.example.repository.book;
 
 public abstract class BookRepositoryDecorator implements BookRepository {
 
