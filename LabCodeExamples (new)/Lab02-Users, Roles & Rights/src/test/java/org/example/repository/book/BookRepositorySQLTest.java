@@ -2,10 +2,8 @@ package org.example.repository.book;
 
 import org.example.database.DatabaseConnectionFactory;
 import org.example.database.DbConnection;
-import org.example.model.Book;
-import org.example.model.BookBuilder;
-import org.example.repository.book.BookRepository;
-import org.example.repository.book.BookRepositorySQL;
+import org.example.model.book.Book;
+import org.example.model.book.BookBuilder;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

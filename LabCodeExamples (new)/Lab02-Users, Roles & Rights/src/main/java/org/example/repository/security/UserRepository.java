@@ -1,6 +1,6 @@
 package org.example.repository.security;
 
-import org.example.model.User;
+import org.example.model.authentication.User;
 
 import java.util.List;
 

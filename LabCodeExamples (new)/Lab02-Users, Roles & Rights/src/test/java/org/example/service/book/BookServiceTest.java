@@ -1,7 +1,7 @@
 package org.example.service.book;
 
-import org.example.model.Book;
-import org.example.model.BookBuilder;
+import org.example.model.book.Book;
+import org.example.model.book.BookBuilder;
 import org.example.repository.book.BookRepository;
 import org.example.repository.book.BookRepositoryMock;
 import org.junit.jupiter.api.BeforeAll;

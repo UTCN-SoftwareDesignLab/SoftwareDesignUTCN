@@ -1,6 +1,6 @@
 package org.example.repository.book;
 
-import org.example.model.Book;
+import org.example.model.book.Book;
 import org.example.repository.Cache;
 
 import java.util.List;

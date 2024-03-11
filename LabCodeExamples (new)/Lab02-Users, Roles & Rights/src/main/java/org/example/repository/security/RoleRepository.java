@@ -1,6 +1,6 @@
 package org.example.repository.security;
 
-import org.example.model.Role;
+import org.example.model.authentication.Role;
 
 public interface RoleRepository {
 

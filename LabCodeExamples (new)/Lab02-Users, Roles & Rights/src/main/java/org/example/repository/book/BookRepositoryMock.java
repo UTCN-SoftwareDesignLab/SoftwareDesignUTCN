@@ -1,6 +1,6 @@
 package org.example.repository.book;
 
-import org.example.model.Book;
+import org.example.model.book.Book;
 
 import java.util.ArrayList;
 import java.util.List;
