@@ -3,6 +3,7 @@ package org.example.service.security;
 import org.example.database.DatabaseConnectionFactory;
 import org.example.database.DbConnection;
 import org.example.model.security.User;
+import org.example.model.validation.Notification;
 import org.example.repository.security.RoleRepository;
 import org.example.repository.security.RoleRepositorySQL;
 import org.example.repository.security.UserRepository;
@@ -38,11 +39,12 @@ class SecurityServiceTest {
   }
 
   @Test
-  void register() throws SQLException {
+  void register() {
     String johndoe = "johndoe";
-    User user1 = securityService.register(johndoe, "parola");
-    assertNotNull(user1);
-    assertTrue(user1.getId() >= 0);
+    Notification<User> user1 = securityService.register(johndoe, "parola");
+    User result = user1.getResult();
+    assertNotNull(result);
+    assertTrue(result.getId() >= 0);
 
     assertThrows(SQLException.class, () -> securityService.register(johndoe, "altaparola"));
   }

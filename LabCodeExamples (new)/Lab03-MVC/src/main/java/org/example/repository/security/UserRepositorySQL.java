@@ -2,6 +2,7 @@ package org.example.repository.security;
 
 import org.example.model.security.User;
 import org.example.model.security.UserBuilder;
+import org.example.model.validation.Notification;
 
 import java.sql.*;
 
@@ -19,24 +20,30 @@ public class UserRepositorySQL implements UserRepository {
 
   @Override
   // todo: implement with optional
-  public User findByUsernameAndPassword(String username, String password) {
+  public Notification<User> findByUsernameAndPassword(String username, String password) {
+    Notification<User> resultNotification = new Notification<>();
     try {
       Statement statement = connection.createStatement();
 
       String fetchUserSql =
           "Select * from `" + USER + "` where `username`=\'" + username + "\' and `password`=\'" + password + "\'";
       ResultSet userResultSet = statement.executeQuery(fetchUserSql);
-      userResultSet.next();
-
-      return new UserBuilder()
-          .setUsername(userResultSet.getString("username"))
-          .setPassword(userResultSet.getString("password"))
-          .setRoles(roleRepository.findRolesForUser(userResultSet.getLong("id")))
-          .build();
+      if (userResultSet.next()) {
+        User user = new UserBuilder()
+            .setUsername(userResultSet.getString("username"))
+            .setPassword(userResultSet.getString("password"))
+            .setRoles(roleRepository.findRolesForUser(userResultSet.getLong("id")))
+            .build();
+        resultNotification.setResult(user);
+        return resultNotification;
+      } else {
+        resultNotification.addError("Invalid username or password.");
+      }
     } catch (SQLException e) {
       System.out.println(e);
+      resultNotification.addError("Something is wrong with the database.");
     }
-    return null;
+    return resultNotification;
   }
 
   @Override

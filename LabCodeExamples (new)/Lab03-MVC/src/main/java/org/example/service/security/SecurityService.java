@@ -4,6 +4,8 @@ import org.example.model.security.ERole;
 import org.example.model.security.Role;
 import org.example.model.security.User;
 import org.example.model.security.UserBuilder;
+import org.example.model.validation.Notification;
+import org.example.model.validation.UserValidator;
 import org.example.repository.security.RoleRepository;
 import org.example.repository.security.UserRepository;
 
@@ -21,21 +23,37 @@ public class SecurityService {
     this.roleRepository = roleRepository;
   }
 
-  public User register(String username, String password) throws SQLException {
-    String encodedPassword = encodePassword(password);
-
+  public Notification<User> register(String username, String password) {
     Role customerRole = roleRepository.findRoleByTitle(ERole.CUSTOMER);
 
     User user = new UserBuilder()
         .setUsername(username)
-        .setPassword(encodedPassword)
+        .setPassword(password)
         .setRoles(List.of(customerRole))
         .build();
-    //todo: link with user_role
-    return userRepository.create(user);
+
+    UserValidator validator = new UserValidator(user);
+    boolean validUser = validator.validate();
+    Notification<User> userRegistrationNotification = new Notification<>();
+
+    if (!validUser) {
+      validator.getErrors().forEach(userRegistrationNotification::addError);
+    } else {
+      user.setPassword(encodePassword(password));
+      User createdUser;
+      try {
+        createdUser = userRepository.create(user);
+      } catch (SQLException e) {
+        userRegistrationNotification.addError("There was something wrong with the database!");
+        return userRegistrationNotification;
+      }
+      userRegistrationNotification.setResult(createdUser);
+    }
+
+    return userRegistrationNotification;
   }
 
-  public User login(String username, String password) {
+  public Notification<User> login(String username, String password) {
     return userRepository.findByUsernameAndPassword(username, encodePassword(password));
   }
 
