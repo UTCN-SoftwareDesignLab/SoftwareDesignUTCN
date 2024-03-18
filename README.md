@@ -8,7 +8,8 @@
 - [One example of the transgression of Liskov's substitution principle](http://www.oodesign.com/liskov-s-substitution-principle.html)
 - [Martin Fowler on Dependency Injection](https://martinfowler.com/articles/injection.html)  
 
-
+### Lab 2:
+- [Example 1 - Basics](https://github.com/UTCN-SoftwareDesignLab/SoftwareDesignUTCN/tree/master/LabCodeExamples%20(new)/Lab01-Basics)
 
 ### Frontend Framework resources:
 - VUE:
