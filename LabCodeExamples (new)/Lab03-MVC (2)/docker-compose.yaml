@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  db:
+    image: mysql/mysql-server:8.0
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'sd-basics'
+      MYSQL_ROOT_PASSWORD: 'root'
+      MYSQL_ROOT_HOST: '%'
+    ports:
+      - '3306:3306'
