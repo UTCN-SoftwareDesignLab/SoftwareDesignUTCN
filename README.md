@@ -14,6 +14,9 @@
 ### Lab 3:
 - [Example 2 - Users & Roles](https://github.com/UTCN-SoftwareDesignLab/SoftwareDesignUTCN/tree/master/LabCodeExamples%20(new)/Lab02-Users%2C%20Roles%20%26%20Rights)
 
+### Lab 4:
+- [Spring - basics](https://github.com/UTCN-SoftwareDesignLab/SoftwareDesignUTCN/tree/master/LabCodeExamples%20(new)/Lab04-Spring1)
+
 ### Frontend Framework resources:
 - VUE:
   - [Setup NPM (stop after doing that)](https://www.youtube.com/watch?v=pD94EojHEsc)
