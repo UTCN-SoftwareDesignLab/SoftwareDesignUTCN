@@ -15,9 +15,12 @@
 - [Example 2 - Users & Roles](https://github.com/UTCN-SoftwareDesignLab/SoftwareDesignUTCN/tree/master/LabCodeExamples%20(new)/Lab02-Users%2C%20Roles%20%26%20Rights)
 
 ### Lab 4:
-- [Spring - basics](https://github.com/UTCN-SoftwareDesignLab/SoftwareDesignUTCN/tree/master/LabCodeExamples%20(new)/Lab04-Spring1)
+- [Example 3 - MVC](https://github.com/UTCN-SoftwareDesignLab/SoftwareDesignUTCN/tree/master/LabCodeExamples%20(new)/Lab03-MVC)
 
 ### Lab 5:
+- [Spring - basics](https://github.com/UTCN-SoftwareDesignLab/SoftwareDesignUTCN/tree/master/LabCodeExamples%20(new)/Lab04-Spring1)
+
+### Lab 6:
 - [Spring - user management & authentication](https://github.com/UTCN-SoftwareDesignLab/SoftwareDesignUTCN/tree/master/LabCodeExamples%20(new)/Lab05-Spring2)
 - [JWT Flow in Spring 3](https://medium.com/@truongbui95/jwt-authentication-and-authorization-with-spring-boot-3-and-spring-security-6-2f90f9337421)
 
