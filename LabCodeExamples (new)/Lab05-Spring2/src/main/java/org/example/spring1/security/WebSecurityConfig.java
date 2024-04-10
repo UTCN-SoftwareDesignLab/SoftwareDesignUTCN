@@ -1,10 +1,8 @@
 package org.example.spring1.security;
 
 import lombok.RequiredArgsConstructor;
-import org.example.spring1.user.RoleRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.data.jpa.repository.support.SimpleJpaRepository;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -29,17 +27,16 @@ public class WebSecurityConfig {
 
   private final UserDetailsService userDetailsService;
   private final AuthTokenFilter jwtAuthFilter;
-  private final AuthenticationProvider authenticationProvider;
 
   @Bean
   public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
     http.csrf().disable()
         .authorizeHttpRequests(request ->
             request.requestMatchers(AUTH).permitAll() // localhost:8080/api/auth/...
-            .anyRequest().authenticated()
+                .anyRequest().authenticated()
         )
         .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-        .authenticationProvider(authenticationProvider)
+        .authenticationProvider(authenticationProvider())
         .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
 
     return http.build();
