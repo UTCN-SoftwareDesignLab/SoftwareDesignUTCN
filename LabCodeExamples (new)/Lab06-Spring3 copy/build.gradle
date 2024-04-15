@@ -2,6 +2,7 @@ plugins {
     id 'java'
     id 'org.springframework.boot' version '3.2.4'
     id 'io.spring.dependency-management' version '1.1.4'
+    id "org.flywaydb.flyway" version "7.9.0"
 }
 
 group = 'org.example'
@@ -42,9 +43,17 @@ dependencies {
     implementation group: 'javax.validation', name: 'validation-api', version: '2.0.1.Final'
 
     testImplementation group: 'com.tngtech.archunit', name: 'archunit-junit5', version: '1.2.1'
-
+    implementation group: 'org.flywaydb', name: 'flyway-core', version: '8.5.13'
+    implementation 'org.flywaydb:flyway-mysql:8.5.13'
 }
 
 tasks.named('test') {
     useJUnitPlatform()
+}
+
+flyway {
+    url = 'jdbc:mysql://localhost:3306/'
+    user = 'root'
+    password = 'root'
+    schemas = ['spring1']
 }
