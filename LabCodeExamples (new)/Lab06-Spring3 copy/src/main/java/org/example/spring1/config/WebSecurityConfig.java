@@ -22,6 +22,7 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import java.util.Arrays;
+import java.util.List;
 
 import static org.example.spring1.UrlMapping.AUTH;
 
@@ -38,9 +39,9 @@ public class WebSecurityConfig {
     http.csrf(CsrfConfigurer::disable)
         .cors(cors -> cors.configurationSource(request -> {
           var corsConfiguration = new CorsConfiguration();
-          corsConfiguration.setAllowedOrigins(Arrays.asList("http://localhost:3000"));
+          corsConfiguration.setAllowedOrigins(List.of("http://localhost:3000"));
           corsConfiguration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
-          corsConfiguration.setAllowedHeaders(Arrays.asList("*"));
+          corsConfiguration.setAllowedHeaders(List.of("*"));
           return corsConfiguration;
         }))
         .authorizeHttpRequests(request ->
