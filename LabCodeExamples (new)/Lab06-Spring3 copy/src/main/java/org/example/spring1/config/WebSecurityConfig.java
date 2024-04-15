@@ -17,8 +17,11 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+import java.util.Arrays;
 
 import static org.example.spring1.UrlMapping.AUTH;
 
@@ -33,6 +36,13 @@ public class WebSecurityConfig {
   @Bean
   public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
     http.csrf(CsrfConfigurer::disable)
+        .cors(cors -> cors.configurationSource(request -> {
+          var corsConfiguration = new CorsConfiguration();
+          corsConfiguration.setAllowedOrigins(Arrays.asList("http://localhost:3000"));
+          corsConfiguration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
+          corsConfiguration.setAllowedHeaders(Arrays.asList("*"));
+          return corsConfiguration;
+        }))
         .authorizeHttpRequests(request ->
             request.requestMatchers(AUTH).permitAll() // localhost:8080/api/auth/...
                 .anyRequest().authenticated()
@@ -61,15 +71,5 @@ public class WebSecurityConfig {
   @Bean
   public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
     return authenticationConfiguration.getAuthenticationManager();
-  }
-
-  @Bean
-  public WebMvcConfigurer corsConfigurer() {
-    return new WebMvcConfigurer() {
-      @Override
-      public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/**").allowedOriginPatterns("http://localhost:4200").allowCredentials(true);
-      }
-    };
   }
 }
