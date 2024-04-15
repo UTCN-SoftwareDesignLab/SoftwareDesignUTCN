@@ -45,7 +45,7 @@ public class WebSecurityConfig {
           return corsConfiguration;
         }))
         .authorizeHttpRequests(request ->
-            request.requestMatchers(AUTH).permitAll() // localhost:8080/api/auth/...
+            request.requestMatchers(AUTH + "/**").permitAll() // localhost:8080/api/auth/...
                 .anyRequest().authenticated()
         )
         .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
