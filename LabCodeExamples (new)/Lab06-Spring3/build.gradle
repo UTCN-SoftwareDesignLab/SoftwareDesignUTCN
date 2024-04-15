@@ -44,7 +44,7 @@ dependencies {
     testImplementation group: 'com.tngtech.archunit', name: 'archunit-junit5', version: '1.2.1'
 
     implementation group: 'org.flywaydb', name: 'flyway-core', version: '8.5.13'
-//    implementation 'org.flywaydb:flyway-mysql:7.9.0'
+    implementation 'org.flywaydb:flyway-mysql:8.5.13'
 }
 
 tasks.named('test') {
