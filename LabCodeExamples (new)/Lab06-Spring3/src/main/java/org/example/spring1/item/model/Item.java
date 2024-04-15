@@ -3,6 +3,8 @@ package org.example.spring1.item.model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDate;
+
 @Builder
 @Getter
 @Setter
@@ -20,4 +22,7 @@ public class Item {
 
   @Column(length = 512)
   private String description;
+
+  @Column(nullable = false)
+  private LocalDate dateCreated;
 }

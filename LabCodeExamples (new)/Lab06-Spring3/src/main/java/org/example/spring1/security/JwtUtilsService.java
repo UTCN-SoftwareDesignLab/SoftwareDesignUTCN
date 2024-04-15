@@ -1,7 +1,6 @@
 package org.example.spring1.security;
 
 import io.jsonwebtoken.*;
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.example.spring1.config.properties.AppProperties;
 import org.example.spring1.user.UserDetailsImpl;

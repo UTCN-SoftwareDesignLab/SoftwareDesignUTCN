@@ -5,8 +5,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
 
-@ConfigurationPropertiesScan
+import java.time.LocalDate;
+
 @SpringBootApplication
+@ConfigurationPropertiesScan
 public class Spring1Application {
 
   public static void main(String[] args) {
@@ -17,7 +19,7 @@ public class Spring1Application {
     String description = build.getDescription();
     build.setId(-2L);
 
-    Item item1 = new Item(-1L, "name", "descript");
+    Item item1 = new Item(-1L, "name", "descript", LocalDate.now());
     Item item2 = new Item();
   }
 

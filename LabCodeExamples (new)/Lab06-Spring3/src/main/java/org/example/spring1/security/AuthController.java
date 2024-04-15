@@ -7,6 +7,7 @@ import org.example.spring1.security.dto.MessageResponse;
 import org.example.spring1.security.dto.SignupRequest;
 import org.example.spring1.user.UserDetailsImpl;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;

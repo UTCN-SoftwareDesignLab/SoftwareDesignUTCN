@@ -1,7 +1,7 @@
 package org.example.spring1.security;
 
 import lombok.RequiredArgsConstructor;
-import org.example.spring1.exceptions.EntityNotFoundException;
+import org.example.spring1.exception.EntityNotFoundException;
 import org.example.spring1.security.dto.SignupRequest;
 import org.example.spring1.user.RoleRepository;
 import org.example.spring1.user.UserRepository;
