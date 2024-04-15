@@ -4,8 +4,10 @@ import org.example.spring1.item.model.Item;
 import org.example.spring1.user.model.ERole;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
 
 @SpringBootApplication
+@ConfigurationPropertiesScan
 public class Spring1Application {
 
   public static void main(String[] args) {

@@ -1,28 +1,22 @@
 package org.example.spring1.security;
 
 import io.jsonwebtoken.*;
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
+import org.example.spring1.config.properties.AppProperties;
 import org.example.spring1.user.UserDetailsImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.Date;
 
 @RequiredArgsConstructor
-@AllArgsConstructor
-@Component
-public class JwtUtils {
-  private static final Logger logger = LoggerFactory.getLogger(JwtUtils.class);
+@Service
+public class JwtUtilsService {
+  private static final Logger logger = LoggerFactory.getLogger(JwtUtilsService.class);
 
-  @Value("${app.jwtSecret}")
-  private String jwtSecret;
-
-  @Value("${app.jwtExpirationMs}")
-  private int jwtExpirationMs;
+  private final AppProperties appProperties;
 
   public String generateJwtToken(Authentication authentication) {
     UserDetailsImpl userPrincipal = (UserDetailsImpl) authentication.getPrincipal();
@@ -30,14 +24,14 @@ public class JwtUtils {
     return Jwts.builder()
         .setSubject((userPrincipal.getUsername()))
         .setIssuedAt(new Date())
-        .setExpiration(new Date((new Date()).getTime() + jwtExpirationMs))
-        .signWith(SignatureAlgorithm.HS512, jwtSecret)
+        .setExpiration(new Date((new Date()).getTime() + appProperties.getJwtExpirationMs()))
+        .signWith(SignatureAlgorithm.HS512, appProperties.getJwtSecret())
         .compact();
   }
 
   public boolean validateJwtToken(String authToken) {
     try {
-      Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(authToken);
+      Jwts.parser().setSigningKey(appProperties.getJwtSecret()).parseClaimsJws(authToken);
       return true;
     } catch (SignatureException e) {
       logger.error("Invalid JWT signature: {}", e.getMessage());
@@ -55,7 +49,7 @@ public class JwtUtils {
   }
 
   public String getUsernameFromJwtToken(String jwt) {
-    return Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(jwt).getBody().getSubject();
+    return Jwts.parser().setSigningKey(appProperties.getJwtSecret()).parseClaimsJws(jwt).getBody().getSubject();
   }
 
 }

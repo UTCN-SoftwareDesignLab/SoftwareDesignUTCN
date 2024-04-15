@@ -2,6 +2,7 @@ package org.example.spring1.item;
 
 import java.util.List;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j2;
 import org.example.spring1.item.model.Item;
 import org.springframework.stereotype.Service;
 

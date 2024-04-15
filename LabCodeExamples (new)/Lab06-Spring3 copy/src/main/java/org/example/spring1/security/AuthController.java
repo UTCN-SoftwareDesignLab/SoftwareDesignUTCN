@@ -28,17 +28,16 @@ import static org.example.spring1.UrlMapping.*;
 @RequiredArgsConstructor
 public class AuthController {
 
-  private final AuthenticationManager authenticationManager;
   private final AuthService authService;
-  private final JwtUtils jwtUtils;
+  private final JwtUtilsService jwtUtilsService;
 
   @PostMapping(SIGN_IN)
   public ResponseEntity<JwtResponse> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
-    Authentication authentication = authenticationManager.authenticate(
+    Authentication authentication = authService.authenticate(
         new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
 
     SecurityContextHolder.getContext().setAuthentication(authentication);
-    String jwt = jwtUtils.generateJwtToken(authentication);
+    String jwt = jwtUtilsService.generateJwtToken(authentication);
 
     UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
     List<String> roles = userDetails.getAuthorities().stream()

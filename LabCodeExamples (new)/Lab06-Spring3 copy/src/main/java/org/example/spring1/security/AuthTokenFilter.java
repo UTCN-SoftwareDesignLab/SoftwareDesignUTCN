@@ -5,7 +5,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
-import org.example.spring1.user.UserDetailsServiceImpl;
+import org.example.spring1.user.UserDetailsImplService;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -20,16 +20,16 @@ import java.io.IOException;
 @RequiredArgsConstructor
 public class AuthTokenFilter extends OncePerRequestFilter {
 
-  private final JwtUtils jwtUtils;
-  private final UserDetailsServiceImpl userDetailsService;
+  private final JwtUtilsService jwtUtilsService;
+  private final UserDetailsImplService userDetailsService;
 
   @Override
   protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
 
     String jwt = parseJwt(request);
 
-    if(jwt != null && jwtUtils.validateJwtToken(jwt)) {
-      String username = jwtUtils.getUsernameFromJwtToken(jwt);
+    if(jwt != null && jwtUtilsService.validateJwtToken(jwt)) {
+      String username = jwtUtilsService.getUsernameFromJwtToken(jwt);
       UserDetails userDetails = userDetailsService.loadUserByUsername(username);
 
       UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(
