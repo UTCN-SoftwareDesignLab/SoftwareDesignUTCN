@@ -1,10 +1,11 @@
 package org.example.spring1;
 
 import org.example.spring1.item.model.Item;
-import org.example.spring1.user.model.ERole;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
+
+import java.time.LocalDate;
 
 @SpringBootApplication
 @ConfigurationPropertiesScan
@@ -18,7 +19,7 @@ public class Spring1Application {
     String description = build.getDescription();
     build.setId(-2L);
 
-    Item item1 = new Item(-1L, "name", "descript");
+    Item item1 = new Item(-1L, "name", "descript", LocalDate.now());
     Item item2 = new Item();
   }
 
