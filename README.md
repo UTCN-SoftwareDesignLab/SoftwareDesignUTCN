@@ -27,6 +27,8 @@
 ### Lab 7:
 - [Spring - Archunit & Database Migrations (Flyway)](https://github.com/UTCN-SoftwareDesignLab/SoftwareDesignUTCN/tree/master/LabCodeExamples%20(new)/Lab06-Spring3)
 
+### Lab 8:
+- [Spring - API design](https://github.com/UTCN-SoftwareDesignLab/SoftwareDesignUTCN/tree/master/LabCodeExamples%20(new)/Lab07-Spring4)
 
 ### Frontend Framework resources:
 - VUE:
