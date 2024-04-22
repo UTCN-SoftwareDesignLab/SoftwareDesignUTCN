@@ -1,7 +1,6 @@
 package org.example.spring1.item;
 
 import lombok.RequiredArgsConstructor;
-import org.example.spring1.item.model.Item;
 import org.example.spring1.item.model.dto.ItemDTO;
 import org.example.spring1.item.model.dto.ItemRequestDTO;
 import org.springframework.http.ResponseEntity;
@@ -16,13 +15,13 @@ public class ItemService {
   private final ItemRepository itemRepository;
   private final ItemMapper itemMapper;
 
-  public List<Item> findAll() {
-    return itemRepository.findAll();
+  public List<ItemDTO> findAll() {
+    return itemRepository.findAll().stream().map(itemMapper::toItemDto).toList();
   }
 
   public ResponseEntity<?> get(Long id) {
     return itemRepository.findById(id)
-        .map(itemMapper::fromEntity)
+        .map(itemMapper::toItemDto)
         .map(ResponseEntity::ok)
         .orElse(ResponseEntity.notFound().build());
   }
@@ -35,7 +34,7 @@ public class ItemService {
 
   }
 
-  public List<Item> findAllFiltered(String name) {
+  public List<ItemDTO> findAllFiltered(String name) {
     return null;
   }
 

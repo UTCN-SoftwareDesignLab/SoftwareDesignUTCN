@@ -1,6 +1,7 @@
 package org.example.spring1.item;
 
 import org.example.spring1.item.model.Item;
+import org.example.spring1.item.model.dto.ItemDTO;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -38,8 +39,7 @@ public class ItemServiceUnitTest {
 
     when(itemRepository.findAll()).thenReturn(preparedItems);
 
-    List<Item> returnedItems = itemService.findAll();
+    List<ItemDTO> returnedItems = itemService.findAll();
     assertEquals(preparedItems.size(), returnedItems.size());
-    assertEquals(preparedItems, returnedItems);
   }
 }

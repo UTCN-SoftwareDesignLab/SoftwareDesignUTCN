@@ -1,7 +1,6 @@
 package org.example.spring1.item;
 
 import org.example.spring1.core.SpringControllerBaseTest;
-import org.example.spring1.item.model.Item;
 import org.example.spring1.item.model.dto.ItemDTO;
 import org.example.spring1.item.model.dto.ItemRequestDTO;
 import org.junit.jupiter.api.BeforeEach;
@@ -39,10 +38,10 @@ class ItemControllerTest extends SpringControllerBaseTest {
 
   @Test
   void findAll() throws Exception {
-    List<Item> items = new ArrayList<>();
+    List<ItemDTO> items = new ArrayList<>();
     int nrItems = 10;
     for (int i = 0; i < nrItems; i++) {
-      items.add(Item.builder().name(String.valueOf(i)).build());
+      items.add(ItemDTO.builder().name(String.valueOf(i)).build());
     }
     when(itemService.findAll()).thenReturn(items);
 

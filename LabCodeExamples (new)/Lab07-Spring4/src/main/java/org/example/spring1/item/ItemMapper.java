@@ -8,9 +8,9 @@ import org.mapstruct.Mapper;
 @Mapper(componentModel = "spring")
 public interface ItemMapper {
 
-  ItemDTO fromEntity(Item item);
+  ItemDTO toItemDto(Item item);
 
-  Item toDto(ItemDTO item);
+  Item toEntity(ItemDTO item);
 
   ItemRequestDTO entityToRequestDTO(Item item);
 }

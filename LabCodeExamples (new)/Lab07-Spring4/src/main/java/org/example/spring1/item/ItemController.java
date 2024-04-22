@@ -20,12 +20,12 @@ public class ItemController {
   private final ItemService itemService;
 
   @GetMapping
-  public List<Item> findAll() {
+  public List<ItemDTO> findAll() {
     return itemService.findAll();
   }
 
   @GetMapping(FILTERED_ITEMS_PART)
-  public List<Item> findAllFiltered(@RequestParam String name) {
+  public List<ItemDTO> findAllFiltered(@RequestParam String name) {
     return itemService.findAllFiltered(name);
   }
 
