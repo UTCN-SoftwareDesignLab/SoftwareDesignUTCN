@@ -24,6 +24,12 @@
 - [Spring - user management & authentication](https://github.com/UTCN-SoftwareDesignLab/SoftwareDesignUTCN/tree/master/LabCodeExamples%20(new)/Lab05-Spring2)
 - [JWT Flow in Spring 3](https://medium.com/@truongbui95/jwt-authentication-and-authorization-with-spring-boot-3-and-spring-security-6-2f90f9337421)
 
+### Lab 7:
+- [Spring - Archunit & Database Migrations (Flyway)](https://github.com/UTCN-SoftwareDesignLab/SoftwareDesignUTCN/tree/master/LabCodeExamples%20(new)/Lab06-Spring3)
+
+### Lab 8:
+- [Spring - API design](https://github.com/UTCN-SoftwareDesignLab/SoftwareDesignUTCN/tree/master/LabCodeExamples%20(new)/Lab07-Spring4)
+
 ### Frontend Framework resources:
 - VUE:
   - [Setup NPM (stop after doing that)](https://www.youtube.com/watch?v=pD94EojHEsc)
