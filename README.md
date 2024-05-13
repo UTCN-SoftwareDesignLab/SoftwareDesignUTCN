@@ -30,6 +30,9 @@
 ### Lab 8:
 - [Spring - API design](https://github.com/UTCN-SoftwareDesignLab/SoftwareDesignUTCN/tree/master/LabCodeExamples%20(new)/Lab07-Spring4)
 
+### Lab 9:
+- [Spring - QueryDSL](https://github.com/UTCN-SoftwareDesignLab/SoftwareDesignUTCN/tree/master/LabCodeExamples%20(new)/Lab07-Spring5)
+
 ### Frontend Framework resources:
 - VUE:
   - [Setup NPM (stop after doing that)](https://www.youtube.com/watch?v=pD94EojHEsc)
